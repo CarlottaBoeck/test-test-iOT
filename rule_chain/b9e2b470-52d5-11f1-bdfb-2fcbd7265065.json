@@ -615,7 +615,7 @@
                 "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
             }
         ],
-        "ruleChainConnections": null
+        "ruleChainConnections": []
     },
     "relations": [],
     "attributes": {
