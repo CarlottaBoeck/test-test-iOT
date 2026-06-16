@@ -12,7 +12,6 @@
     },
     "deviceData" : {
       "configuration" : {
-        "type" : "DEFAULT",
         "type" : "DEFAULT"
       },
       "transportConfiguration" : {
@@ -21,7 +20,7 @@
     },
     "deviceProfileId" : {
       "entityType" : "DEVICE_PROFILE",
-      "id" : "b9f0be30-52d5-11f1-bdfb-2fcbd7265065"
+      "id" : "cc001000-0001-11f1-0000-000000000001"
     },
     "externalId" : null,
     "firmwareId" : null,
