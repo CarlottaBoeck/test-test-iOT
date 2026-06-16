@@ -1,0 +1,105 @@
+{
+  "entityType" : "ASSET",
+  "entity" : {
+    "additionalInfo" : {
+      "description" : "Virtual entity representing the booking integration for tracking customer reservations and space assignments"
+    },
+    "assetProfileId" : {
+      "entityType" : "ASSET_PROFILE",
+      "id" : "f840d670-6658-11f1-98a7-a1ee92a74abb"
+    },
+    "customerId" : {
+      "entityType" : "CUSTOMER",
+      "id" : "13814000-1dd2-11b2-8080-808080808080"
+    },
+    "externalId" : null,
+    "id" : {
+      "entityType" : "ASSET",
+      "id" : "48c2e250-6659-11f1-a6df-b7b5c1df0b6e"
+    },
+    "label" : "External Booking Platform",
+    "name" : "External Booking Platform",
+    "ownerId" : null,
+    "type" : "BookingSystem"
+  },
+  "relations" : [ ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  },
+  "calculatedFields" : [ {
+    "additionalInfo" : null,
+    "configuration" : {
+      "type" : "SCRIPT",
+      "arguments" : {
+        "base_price_per_hour" : {
+          "defaultValue" : "2.0",
+          "refEntityId" : {
+            "entityType" : "ASSET",
+            "id" : "48c2e250-6659-11f1-a6df-b7b5c1df0b6e"
+          },
+          "refEntityKey" : {
+            "key" : "base_price_per_hour",
+            "type" : "TS_LATEST"
+          }
+        },
+        "booking_status" : {
+          "defaultValue" : "no_booking_request",
+          "refEntityId" : {
+            "entityType" : "ASSET",
+            "id" : "48c2e250-6659-11f1-a6df-b7b5c1df0b6e"
+          },
+          "refEntityKey" : {
+            "key" : "booking_status",
+            "type" : "TS_LATEST"
+          }
+        },
+        "occupied_spaces" : {
+          "defaultValue" : "0",
+          "refEntityId" : {
+            "entityType" : "ASSET",
+            "id" : "48c2e250-6659-11f1-a6df-b7b5c1df0b6e"
+          },
+          "refEntityKey" : {
+            "key" : "occupied_spaces",
+            "type" : "TS_LATEST"
+          }
+        },
+        "requested_duration_hours" : {
+          "defaultValue" : "1",
+          "refEntityId" : {
+            "entityType" : "ASSET",
+            "id" : "48c2e250-6659-11f1-a6df-b7b5c1df0b6e"
+          },
+          "refEntityKey" : {
+            "key" : "requested_duration_hours",
+            "type" : "TS_LATEST"
+          }
+        }
+      },
+      "expression" : "var totalSpaces = 100;\r\n\r\nvar occ = occupied_spaces;\r\nif (occ == null) { occ = 0; }\r\nif (occ instanceof String) { occ = Double.parseDouble(occ); }\r\nif (occ < 0) { occ = 0; }\r\nif (occ > totalSpaces) { occ = totalSpaces; }\r\n\r\nvar freeSpaces = totalSpaces - occ;\r\nvar occupancyRate = (occ / totalSpaces) * 100;\r\n\r\nvar basePrice = base_price_per_hour;\r\nif (basePrice == null) { basePrice = 2.0; }\r\nif (basePrice instanceof String) { basePrice = Double.parseDouble(basePrice); }\r\n\r\nvar duration = requested_duration_hours;\r\nif (duration == null) { duration = 1; }\r\nif (duration instanceof String) { duration = Double.parseDouble(duration); }\r\n\r\nvar priceFactor = 1.0;\r\nvar demandLevel = \"LOW\";\r\nif (occupancyRate < 50) { priceFactor = 1.0; demandLevel = \"LOW\"; }\r\nelse if (occupancyRate < 80) { priceFactor = 1.2; demandLevel = \"MEDIUM\"; }\r\nelse if (occupancyRate < 95) { priceFactor = 1.5; demandLevel = \"HIGH\"; }\r\nelse { priceFactor = 2.0; demandLevel = \"CRITICAL\"; }\r\n\r\nvar currentPrice = basePrice * priceFactor;\r\nvar bookingPrice = currentPrice * duration;\r\n\r\nvar status = booking_status;\r\nif (status == null) { status = \"no_booking_request\"; }\r\n\r\nvar reservedSpaceId = \"none\";\r\nif (status == \"requested\") {\r\n  if (freeSpaces > 0) {\r\n    status = \"confirmed\";\r\n    reservedSpaceId = \"P-\" + (occ + 1);\r\n    occ = occ + 1;\r\n    freeSpaces = totalSpaces - occ;\r\n    occupancyRate = (occ / totalSpaces) * 100;\r\n  } else {\r\n    status = \"rejected\";\r\n  }\r\n}\r\n\r\nvar displayStatus = \"AVAILABLE\";\r\nvar displayMessage = freeSpaces + \" Plätze frei – Buchung möglich\";\r\nif (freeSpaces <= 0) {\r\n  displayStatus = \"FULL\";\r\n  displayMessage = \"Parkhaus voll – keine Buchung möglich\";\r\n} else if (freeSpaces <= 10) {\r\n  displayStatus = \"LIMITED\";\r\n  displayMessage = \"Nur noch \" + freeSpaces + \" Plätze frei\";\r\n}\r\n\r\nreturn {\r\n  \"total_spaces\": totalSpaces,\r\n  \"occupied_spaces\": occ,\r\n  \"free_spaces\": freeSpaces,\r\n  \"occupancy_rate\": Math.round(occupancyRate * 100) / 100,\r\n  \"current_price_per_hour\": Math.round(currentPrice * 100) / 100,\r\n  \"booking_price\": Math.round(bookingPrice * 100) / 100,\r\n  \"demand_level\": demandLevel,\r\n  \"booking_status\": status,\r\n  \"reserved_space_id\": reservedSpaceId,\r\n  \"display_status\": displayStatus,\r\n  \"display_message\": displayMessage\r\n};",
+      "output" : {
+        "type" : "TIME_SERIES",
+        "strategy" : {
+          "type" : "IMMEDIATE",
+          "processCfs" : true,
+          "saveLatest" : true,
+          "saveTimeSeries" : true,
+          "sendWsUpdate" : true,
+          "ttl" : 0
+        }
+      }
+    },
+    "configurationVersion" : 0,
+    "debugSettings" : {
+      "allEnabled" : false,
+      "allEnabledUntil" : 1781293627557,
+      "failuresEnabled" : true
+    },
+    "name" : "Calculate Parking & Booking Data",
+    "tenantId" : {
+      "entityType" : "TENANT",
+      "id" : "b9e12dd0-52d5-11f1-bdfb-2fcbd7265065"
+    },
+    "type" : "SCRIPT"
+  } ]
+}

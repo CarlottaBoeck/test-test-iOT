@@ -1,0 +1,130 @@
+{
+  "entityType" : "DEVICE_PROFILE",
+  "entity" : {
+    "default" : false,
+    "defaultDashboardId" : null,
+    "defaultEdgeRuleChainId" : null,
+    "defaultQueueName" : null,
+    "defaultRuleChainId" : null,
+    "description" : "IoT sensor installed in individual parking spaces to monitor occupancy status and report its physical location.",
+    "externalId" : null,
+    "firmwareId" : null,
+    "id" : {
+      "entityType" : "DEVICE_PROFILE",
+      "id" : "bdf53cc0-5aa7-11f1-8462-81b05148cbdb"
+    },
+    "image" : null,
+    "name" : "ParkingSensor",
+    "profileData" : {
+      "alarms" : null,
+      "configuration" : {
+        "type" : "DEFAULT"
+      },
+      "provisionConfiguration" : null,
+      "transportConfiguration" : {
+        "type" : "DEFAULT"
+      }
+    },
+    "provisionDeviceKey" : null,
+    "provisionType" : "DISABLED",
+    "softwareId" : null,
+    "transportType" : "DEFAULT",
+    "type" : "DEFAULT"
+  },
+  "relations" : [ ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  },
+  "calculatedFields" : [ {
+    "additionalInfo" : {
+      "aiGenerated" : true
+    },
+    "configuration" : {
+      "type" : "ALARM",
+      "arguments" : {
+        "active" : {
+          "refEntityKey" : {
+            "key" : "active",
+            "scope" : "SERVER_SCOPE",
+            "type" : "ATTRIBUTE"
+          }
+        }
+      },
+      "clearRule" : {
+        "alarmDetails" : "Device is back online",
+        "condition" : {
+          "type" : "SIMPLE",
+          "expression" : {
+            "type" : "SIMPLE",
+            "filters" : [ {
+              "argument" : "active",
+              "operation" : "AND",
+              "predicates" : [ {
+                "type" : "BOOLEAN",
+                "operation" : "EQUAL",
+                "value" : {
+                  "dynamicValueArgument" : null,
+                  "staticValue" : true
+                }
+              } ],
+              "valueType" : "BOOLEAN"
+            } ],
+            "operation" : "AND"
+          },
+          "schedule" : null
+        },
+        "dashboardId" : null
+      },
+      "createRules" : {
+        "CRITICAL" : {
+          "alarmDetails" : "Connectivity lost: device has been offline for more than 15 minutes",
+          "condition" : {
+            "type" : "DURATION",
+            "expression" : {
+              "type" : "SIMPLE",
+              "filters" : [ {
+                "argument" : "active",
+                "operation" : "AND",
+                "predicates" : [ {
+                  "type" : "BOOLEAN",
+                  "operation" : "EQUAL",
+                  "value" : {
+                    "dynamicValueArgument" : null,
+                    "staticValue" : false
+                  }
+                } ],
+                "valueType" : "BOOLEAN"
+              } ],
+              "operation" : "AND"
+            },
+            "schedule" : null,
+            "unit" : "MINUTES",
+            "value" : {
+              "dynamicValueArgument" : null,
+              "staticValue" : 15
+            }
+          },
+          "dashboardId" : null
+        }
+      },
+      "output" : null,
+      "propagate" : true,
+      "propagateRelationTypes" : null,
+      "propagateToOwner" : true,
+      "propagateToOwnerHierarchy" : true,
+      "propagateToTenant" : true
+    },
+    "configurationVersion" : 0,
+    "debugSettings" : {
+      "allEnabled" : false,
+      "allEnabledUntil" : 1779982093428,
+      "failuresEnabled" : false
+    },
+    "name" : "DeviceConnectivityLost",
+    "tenantId" : {
+      "entityType" : "TENANT",
+      "id" : "b9e12dd0-52d5-11f1-bdfb-2fcbd7265065"
+    },
+    "type" : "ALARM"
+  } ]
+}

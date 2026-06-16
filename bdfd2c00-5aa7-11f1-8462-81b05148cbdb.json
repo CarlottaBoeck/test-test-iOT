@@ -1,0 +1,1943 @@
+{
+  "entityType" : "DASHBOARD",
+  "entity" : {
+    "id" : {
+      "entityType" : "DASHBOARD",
+      "id" : "bed11dd0-5aa7-11f1-8462-81b05148cbdb"
+    },
+    "customerId" : null,
+    "ownerId" : null,
+    "title" : "Personal Booking Portal",
+    "name" : "Personal Booking Portal",
+    "image" : null,
+    "assignedCustomers" : null,
+    "mobileHide" : false,
+    "mobileOrder" : null,
+    "configuration" : {
+      "timewindow" : {
+        "selectedTab" : 1,
+        "history" : {
+          "timewindowMs" : 604800000,
+          "historyType" : 0
+        },
+        "aggregation" : {
+          "type" : "NONE"
+        }
+      },
+      "settings" : {
+        "stateControllerId" : "entity",
+        "showTitle" : false,
+        "showDashboardsSelect" : true,
+        "showEntitiesSelect" : true,
+        "showDashboardTimewindow" : true,
+        "showDashboardExport" : true,
+        "toolbarAlwaysOpen" : true
+      },
+      "widgets" : {
+        "98493830-1d15-4033-b6ed-e4e8a6a1db3c" : {
+          "sizeX" : 11,
+          "sizeY" : 1,
+          "row" : 0,
+          "col" : 0,
+          "config" : {
+            "configMode" : "basic",
+            "title" : "Booking Header",
+            "showTitle" : false,
+            "dropShadow" : false,
+            "enableFullscreen" : false,
+            "enableDataExport" : false,
+            "backgroundColor" : "#FFFFFF00",
+            "padding" : "0px",
+            "borderRadius" : "8px",
+            "actions" : { },
+            "settings" : {
+              "useMarkdownTextFunction" : false,
+              "markdownTextPattern" : "**${Name}**",
+              "applyDefaultMarkdownStyle" : true,
+              "markdownCss" : ".tb-markdown-view p {\n    display: flex;\n    margin: 0;\n    align-items: center;\n    height: 100%;\n    font-size: 28px;\n    font-weight: 500;\n    color: #212121;\n    padding: 0;\n}\n"
+            },
+            "datasources" : [ {
+              "type" : "entity",
+              "dataKeys" : [ {
+                "name" : "name",
+                "label" : "Name",
+                "type" : "entityField",
+                "color" : "var(--tb-primary-500)",
+                "settings" : { }
+              } ],
+              "entityAliasId" : "a2005a6e-3608-424d-a331-1da0caa47329"
+            } ]
+          },
+          "id" : "98493830-1d15-4033-b6ed-e4e8a6a1db3c",
+          "typeFullFqn" : "system.cards.markdown_card",
+          "type" : "latest"
+        },
+        "f1bc7a19-7ffc-480a-9922-ddf6695315c7" : {
+          "sizeX" : 4,
+          "sizeY" : 1,
+          "row" : 0,
+          "col" : 15,
+          "config" : {
+            "configMode" : "basic",
+            "title" : "Statistics",
+            "showTitle" : false,
+            "dropShadow" : false,
+            "enableFullscreen" : false,
+            "enableDataExport" : false,
+            "backgroundColor" : "#FFFFF00",
+            "padding" : "0px",
+            "borderRadius" : "8px",
+            "actions" : {
+              "click" : [ {
+                "id" : null,
+                "name" : null,
+                "icon" : null,
+                "type" : "custom",
+                "customFunction" : "let params = widgetContext.stateController.getStateParams();\n\nparams.subStateId = \"booking-statistics\";\n\nwidgetContext.stateController.updateState(widgetContext.stateController.getStateId(), params);\nwidgetContext.updateAliases();"
+              } ]
+            },
+            "settings" : {
+              "appearance" : {
+                "type" : "outlined",
+                "showLabel" : true,
+                "label" : "Statistics",
+                "showIcon" : true,
+                "icon" : "show_chart",
+                "mainColor" : "var(--tb-primary-500)",
+                "backgroundColor" : "#FFFFFF00",
+                "customStyle" : { }
+              },
+              "activatedState" : {
+                "action" : "GET_DASHBOARD_STATE_OBJECT",
+                "defaultValue" : false,
+                "dataToValue" : {
+                  "type" : "FUNCTION",
+                  "compareToValue" : true,
+                  "dataToValueFunction" : "return data.params.subStateId === \"booking-statistics\";"
+                }
+              },
+              "disabledState" : {
+                "action" : "DO_NOTHING"
+              }
+            },
+            "datasources" : [ ]
+          },
+          "id" : "f1bc7a19-7ffc-480a-9922-ddf6695315c7",
+          "typeFullFqn" : "system.action_button",
+          "type" : "latest"
+        },
+        "10691f05-7c5d-4aee-b4de-4e2a42e3855c" : {
+          "sizeX" : 12,
+          "sizeY" : 6,
+          "row" : 0,
+          "col" : 12,
+          "config" : {
+            "configMode" : "basic",
+            "title" : "Parking Floor Map",
+            "titleFont" : {
+              "size" : 21,
+              "sizeUnit" : "px",
+              "weight" : "500",
+              "lineHeight" : "22px"
+            },
+            "showTitle" : false,
+            "dropShadow" : false,
+            "enableFullscreen" : false,
+            "enableDataExport" : false,
+            "padding" : "0px",
+            "margin" : "0px",
+            "borderRadius" : "8px",
+            "widgetStyle" : {
+              "box-shadow" : "0px 2px 4px 0px #00000024;"
+            },
+            "actions" : { },
+            "settings" : {
+              "imageSource" : {
+                "entityAliasId" : "418a0484-383d-49fe-99c9-ceea4361567f",
+                "sourceType" : "entityKey",
+                "entityKey" : {
+                  "name" : "floorPlan",
+                  "label" : "Floor Plan",
+                  "type" : "attribute",
+                  "color" : "var(--tb-primary-500)",
+                  "settings" : { }
+                }
+              },
+              "mapType" : "image",
+              "markers" : [ {
+                "dsType" : "entity",
+                "dsEntityAliasId" : "b9d64206-17e7-4d2e-84ac-960711178ee1",
+                "additionalDataKeys" : [ {
+                  "name" : "occupied",
+                  "label" : "Occupied",
+                  "type" : "timeseries",
+                  "color" : "var(--tb-primary-500)",
+                  "settings" : { }
+                }, {
+                  "name" : "active",
+                  "label" : "Active",
+                  "type" : "attribute",
+                  "color" : "var(--tb-primary-500)",
+                  "settings" : { }
+                }, {
+                  "name" : "name",
+                  "label" : "Name",
+                  "type" : "entityField",
+                  "color" : "var(--tb-primary-500)",
+                  "settings" : { }
+                } ],
+                "xKey" : {
+                  "name" : "positionX",
+                  "label" : "Position X",
+                  "type" : "attribute",
+                  "color" : "var(--tb-primary-500)",
+                  "settings" : { }
+                },
+                "yKey" : {
+                  "name" : "positionY",
+                  "label" : "Position Y",
+                  "type" : "attribute",
+                  "color" : "var(--tb-primary-500)",
+                  "settings" : { }
+                },
+                "label" : {
+                  "show" : true,
+                  "type" : "pattern",
+                  "pattern" : "${Name}"
+                },
+                "markerType" : "icon",
+                "markerIcon" : {
+                  "icon" : "local_parking",
+                  "color" : {
+                    "type" : "function",
+                    "colorFunction" : "if (data.Occupied === 'true') { return '#F44336'; } else { return '#4CAF50'; }"
+                  }
+                },
+                "tooltip" : {
+                  "show" : true,
+                  "trigger" : "click",
+                  "type" : "pattern",
+                  "pattern" : "<b>Sensor:</b> ${Name}<br/><b>Occupied:</b> ${Occupied}<br/><b>Active:</b> ${Active}"
+                }
+              } ],
+              "polygons" : [ ],
+              "circles" : [ ],
+              "fitMapBounds" : true,
+              "mapActionButtons" : [ ]
+            },
+            "datasources" : [ ]
+          },
+          "id" : "10691f05-7c5d-4aee-b4de-4e2a42e3855c",
+          "typeFullFqn" : "system.image_map",
+          "type" : "latest"
+        },
+        "4ae88367-196f-4b74-8c8a-b554c5c35d5d" : {
+          "sizeX" : 1,
+          "sizeY" : 1,
+          "row" : 0,
+          "col" : 23,
+          "config" : {
+            "configMode" : "basic",
+            "title" : "Edit Booking Details",
+            "showTitle" : false,
+            "dropShadow" : false,
+            "enableFullscreen" : false,
+            "enableDataExport" : false,
+            "padding" : "0px",
+            "borderRadius" : "8px",
+            "actions" : {
+              "click" : [ {
+                "id" : "af3a05b2-ba4e-41e0-823d-8093d97b7295",
+                "name" : "Edit Booking System",
+                "icon" : "edit",
+                "type" : "customPretty",
+                "customFunction" : "let $injector = widgetContext.$scope.$injector;\nlet customDialog = $injector.get(widgetContext.servicesMap.get('customDialog'));\nlet entityService = $injector.get(widgetContext.servicesMap.get('entityService'));\nlet attributeService = $injector.get(widgetContext.servicesMap.get('attributeService'));\nlet entityRelationService = $injector.get(widgetContext.servicesMap.get('entityRelationService'));\nlet entityGroupService = $injector.get(widgetContext.servicesMap.get('entityGroupService'));\n\nlet dialogTitle = \"Edit '${entityName}'\";\nlet createEntity = false;\n\nlet attributeKeys = [];\nlet additionalAttributes = [ ];\nlet additionalTelemetry = [ ];\n\nopenEntityDialog();\n\nfunction openEntityDialog() {\n  customDialog.customDialog(htmlTemplate, EntityDialogController).subscribe();\n}\n\nfunction EntityDialogController(instance) {\n  let vm = instance;\n\n  const currentUser = widgetContext.currentUser;\n\n  if (createEntity) {\n    vm.dialogTitle = dialogTitle;\n  } else {\n    vm.dialogTitle = dialogTitle.replaceAll('${entityName}', entityName);\n  }\n\n  vm.submitTitle = createEntity ? 'Create' : 'Save';\n\n  vm.entityFormGroup = vm.fb.group({\n    entityFields: vm.fb.group({\n      name: [null, [vm.validators.required]]\n    }),\n    \n  });\n\n  \n\n  if (attributeKeys.length) {\n    vm.entityFormGroup.addControl('attributes',\n      vm.fb.group({\n        \n      })\n    );\n  }\n\n  vm.save = function() {\n    vm.entityFormGroup.markAsPristine();\n    saveEntity().subscribe(\n      function (entity) {\n        widgetContext.rxjs.forkJoin([\n          saveAttributes(entity.id),\n          saveTelemetry(entity.id),\n          createRelations(entity.id),\n          addToEntityGroups(entity.id)\n        ]).subscribe(\n          function () {\n            widgetContext.updateAliases();\n            vm.dialogRef.close(null);\n          }\n        );\n      }\n    );\n  };\n\n  vm.cancel = function() {\n    vm.dialogRef.close(null);\n  };\n\n  if (!createEntity) {\n    loadEntity();\n  }\n\n  function saveEntity() {\n    const entityFields = vm.entityFormGroup.get('entityFields').value;\n    let entity;\n    if (createEntity) {\n      entity = entityFields;\n      let entityType = null;\n      let entitySubType = null;\n      let entityOwner = null;\n      entity.id = {\n        entityType: entityType\n      };\n      \n      \n      if (entitySubType) {\n        entity.type = entitySubType;\n      }\n      \n      if (entityOwner) {\n        let stateParams = widgetContext.stateController.getStateParams();\n        if (stateParams[entityOwner]) {\n          stateParams = stateParams[entityOwner];\n        }\n        let ownerId = stateParams.entityId;\n        if (ownerId && ownerId.entityType === 'CUSTOMER') {\n          entity.customerId = ownerId;\n        }\n      }\n      if (!entity.customerId && widgetContext.currentUser.authority === 'CUSTOMER_USER') {\n        entity.customerId = {id: widgetContext.currentUser.customerId, entityType: 'CUSTOMER'};\n      }\n      if (entityType === 'USER') {\n        if (entity.customerId) {\n          entity.authority = 'CUSTOMER_USER';\n        } else {\n          entity.authority = 'TENANT_ADMIN';\n        }\n      }\n    } else {\n      entity = {...vm.entity, ...entityFields};\n    }\n    return entityService.saveEntity(entity);\n  }\n\n  function saveAttributes(entityId) {\n    if (attributeKeys.length || additionalAttributes.length) {\n      let attributes = attributeKeys.length ? vm.entityFormGroup.get('attributes').value : [];\n      let attributesArray = [];\n      for (let key in attributes) {\n        if (attributes[key] !== null) {\n          attributesArray.push({key: key, value: attributes[key]});\n        }\n      }\n      if (additionalAttributes.length) {\n        additionalAttributes.forEach(attribute => {\n          attributesArray.push({key: attribute.key, value: attribute.value});\n        })\n      }\n      if (attributesArray.length > 0) {\n        return attributeService.saveEntityAttributes(entityId, \"SERVER_SCOPE\", attributesArray);\n      } else {\n        return widgetContext.rxjs.of([]);\n      }\n    } else {\n      return widgetContext.rxjs.of([]);\n    }\n  }\n\n    function saveTelemetry(entityId) {\n      if (additionalTelemetry.length) {\n        let telemetryArray = [];\n        additionalTelemetry.forEach(telemetry => {\n          telemetryArray.push({key: telemetry.key, value: telemetry.value});\n        })\n        return attributeService.saveEntityTimeseries(entityId, \"LATEST_TELEMETRY\", telemetryArray);\n      } else {\n        return widgetContext.rxjs.of([]);\n      }\n    }\n\n  function createRelations(entityId) {\n    let singleEntityId;\n    for (const value of Object.values(widgetContext.aliasController.entityAliases)) {\n      if (value.filter.type === 'singleEntity') {\n        singleEntityId = value.filter.singleEntity ?? null;\n      }\n    }\n\n    if (createEntity) {\n      let createRelationsObservables = [];\n      \n      \n      if (createRelationsObservables.length) {\n        return widgetContext.rxjs.forkJoin(createRelationsObservables);\n      } else {\n        return widgetContext.rxjs.of([]);\n      }\n    } else {\n      return widgetContext.rxjs.of([]);\n    }\n  }\n\n  function addToEntityGroups(entityId) {\n    if (createEntity) {\n      let addToGroupObservables = [];\n      let targetEntityGroups = null;\n      \n      let entityOwner = null;\n      let ownerId;\n      if (entityOwner) {\n        let stateParams = widgetContext.stateController.getStateParams();\n        if (stateParams[entityOwner]) {\n            stateParams = stateParams[entityOwner];\n        }\n        ownerId = stateParams.entityId;\n      }\n      if (targetEntityGroups && targetEntityGroups.length) {\n        for (let targetEntityGroup of targetEntityGroups) {\n          addToGroupObservables.push(getOrCreateEntityGroupByName(targetEntityGroup, entityId.entityType, ownerId).pipe(\n            widgetContext.rxjs.switchMap((group) => {\n              if (group) {\n                return entityGroupService.addEntityToEntityGroup(group.id.id, entityId.id);\n              } else {\n                return widgetContext.rxjs.of(null);\n              }\n            })\n          ));\n        }\n      }\n      if (addToGroupObservables.length) {\n        return widgetContext.rxjs.forkJoin(addToGroupObservables);\n      } else {\n        return widgetContext.rxjs.of([]);\n      }\n    } else {\n      return widgetContext.rxjs.of([]);\n    }\n  }\n\n  function loadEntity() {\n    entityService.getEntity(entityId.entityType, entityId.id).subscribe(\n      function(entity) {\n        vm.entity = entity;\n        vm.entityFormGroup.get('entityFields').patchValue(entity);\n        if (attributeKeys.length) {\n          attributeService.getEntityAttributes(entityId, 'SERVER_SCOPE', attributeKeys).subscribe(\n            function (attributes) {\n              let entityAttributes = {};\n              for (var i = 0; i < attributes.length; i++) {\n                entityAttributes[attributes[i].key] = attributes[i].value;\n              }\n              vm.entityFormGroup.get('attributes').patchValue(entityAttributes);\n            }\n          );\n        }\n      }\n    );\n  }\n\n  function getOrCreateEntityGroupByName(groupName, groupType, ownerId) {\n    var entityGroupsPageLink = widgetContext.pageLink(10, 0, groupName);\n    let findEntyGroup$;\n    if (ownerId) {\n      findEntyGroup$ = entityGroupService.getEntityGroupsByOwnerIdAndPageLink(ownerId.entityType, ownerId.id, groupType, entityGroupsPageLink, {ignoreLoading: true});\n    } else {\n      findEntyGroup$ = entityGroupService.getEntityGroupsByPageLink(entityGroupsPageLink, groupType, {ignoreLoading: true});\n    }\n    return findEntyGroup$.pipe(\n      widgetContext.rxjs.switchMap((data) => {\n        if (data.data.length) {\n          const findGroup = data.data.find((group) => group.name === groupName);\n          if (findGroup) {\n            return widgetContext.rxjs.of(findGroup);\n          }\n        }\n        const entityGroup = {\n          name: groupName,\n          type: groupType,\n        }\n        if (ownerId) {\n          entityGroup.ownerId = ownerId;\n        }\n        return entityGroupService.saveEntityGroup(entityGroup, {ignoreLoading: true}).pipe(\n          widgetContext.rxjs.catchError(() => widgetContext.rxjs.of(null))\n        );\n      })\n    );\n  }\n}",
+                "customHtml" : "<form #entityForm=\"ngForm\" [formGroup]=\"entityFormGroup\"\n      (ngSubmit)=\"save()\" class=\"entity-form\" style=\"width: 600px;\">\n  <mat-toolbar color=\"primary\">\n    <h2>{{ dialogTitle }}</h2>\n    <span class=\"flex-1\"></span>\n    <button mat-icon-button (click)=\"cancel()\" type=\"button\">\n      <mat-icon class=\"material-icons\">close</mat-icon>\n    </button>\n  </mat-toolbar>\n  <mat-progress-bar color=\"warn\" mode=\"indeterminate\" *ngIf=\"isLoading$ | async\">\n  </mat-progress-bar>\n  <div style=\"height: 4px;\" *ngIf=\"!(isLoading$ | async)\"></div>\n  <div mat-dialog-content>\n    <fieldset formGroupName=\"entityFields\" class=\"tb-form-panel outlined\" [disabled]=\"isLoading$ | async\"><mat-form-field appearance=\"outline\">\n  <mat-label>Booking System Name</mat-label>\n  <input matInput formControlName=\"name\" required=\"required\">\n  @if(entityFormGroup.get(\"entityFields\").get(\"name\").hasError(\"required\")) {\n    <mat-error>Name is required.</mat-error>\n  }\n</mat-form-field>\n</fieldset>\n    \n    \n    \n  </div>\n  <div mat-dialog-actions class=\"flex items-center justify-end\">\n    <button mat-button color=\"primary\"\n            type=\"button\"\n            [disabled]=\"(isLoading$ | async)\"\n            (click)=\"cancel()\" cdkFocusInitial>\n      Cancel\n    </button>\n    <button mat-button mat-raised-button color=\"primary\"\n            type=\"submit\"\n            [disabled]=\"(isLoading$ | async) || entityForm.invalid || !entityForm.dirty\">\n      {{ submitTitle }}\n    </button>\n  </div>\n</form>\n"
+              } ]
+            },
+            "settings" : {
+              "appearance" : {
+                "type" : "filled",
+                "showLabel" : false,
+                "label" : "Edit Booking Details",
+                "showIcon" : true,
+                "icon" : "edit",
+                "mainColor" : "var(--tb-primary-500)",
+                "backgroundColor" : "#FFFFFF",
+                "customStyle" : { }
+              },
+              "activatedState" : {
+                "defaultValue" : false,
+                "action" : "DO_NOTHING",
+                "dataToValue" : {
+                  "type" : "NONE",
+                  "compareToValue" : true
+                }
+              },
+              "disabledState" : {
+                "defaultValue" : false,
+                "action" : "DO_NOTHING",
+                "dataToValue" : {
+                  "type" : "NONE",
+                  "compareToValue" : true
+                }
+              }
+            },
+            "datasources" : [ {
+              "type" : "entity",
+              "dataKeys" : [ ],
+              "entityAliasId" : "a2005a6e-3608-424d-a331-1da0caa47329"
+            } ]
+          },
+          "id" : "4ae88367-196f-4b74-8c8a-b554c5c35d5d",
+          "typeFullFqn" : "system.action_button",
+          "type" : "latest"
+        },
+        "82cc7189-229e-4235-a5ad-1ae0f876d677" : {
+          "sizeX" : 4,
+          "sizeY" : 1,
+          "row" : 0,
+          "col" : 20,
+          "config" : {
+            "configMode" : "basic",
+            "title" : "Statistics",
+            "showTitle" : false,
+            "dropShadow" : false,
+            "enableFullscreen" : false,
+            "enableDataExport" : false,
+            "backgroundColor" : "#FFFFF00",
+            "padding" : "0px",
+            "borderRadius" : "8px",
+            "actions" : {
+              "click" : [ {
+                "id" : null,
+                "name" : null,
+                "icon" : null,
+                "type" : "custom",
+                "customFunction" : "let params = widgetContext.stateController.getStateParams();\n\nparams.subStateId = \"garage-statistics\";\n\nwidgetContext.stateController.updateState(widgetContext.stateController.getStateId(), params);\nwidgetContext.updateAliases();"
+              } ]
+            },
+            "settings" : {
+              "appearance" : {
+                "type" : "outlined",
+                "showLabel" : true,
+                "label" : "Statistics",
+                "showIcon" : true,
+                "icon" : "show_chart",
+                "mainColor" : "var(--tb-primary-500)",
+                "backgroundColor" : "#FFFFFF00",
+                "customStyle" : { }
+              },
+              "activatedState" : {
+                "action" : "GET_DASHBOARD_STATE_OBJECT",
+                "defaultValue" : false,
+                "dataToValue" : {
+                  "type" : "FUNCTION",
+                  "compareToValue" : true,
+                  "dataToValueFunction" : "return data.params.subStateId === \"garage-statistics\";"
+                }
+              },
+              "disabledState" : {
+                "action" : "DO_NOTHING"
+              }
+            },
+            "datasources" : [ ]
+          },
+          "id" : "82cc7189-229e-4235-a5ad-1ae0f876d677",
+          "typeFullFqn" : "system.action_button",
+          "type" : "latest"
+        },
+        "f8a8734f-d189-41c2-a54d-4d4a5a5570f0" : {
+          "sizeX" : 12,
+          "sizeY" : 6,
+          "row" : 0,
+          "col" : 0,
+          "config" : {
+            "configMode" : "basic",
+            "title" : "Occupancy Trend Chart",
+            "titleFont" : {
+              "size" : 21,
+              "sizeUnit" : "px",
+              "weight" : "500",
+              "lineHeight" : "22px"
+            },
+            "showTitle" : true,
+            "dropShadow" : false,
+            "useDashboardTimewindow" : true,
+            "timewindow" : {
+              "selectedTab" : 0,
+              "realtime" : {
+                "interval" : 1000,
+                "timewindowMs" : 60000,
+                "realtimeType" : 0
+              },
+              "aggregation" : {
+                "type" : "AVG"
+              }
+            },
+            "padding" : "0px",
+            "margin" : "0px",
+            "borderRadius" : "8px",
+            "widgetStyle" : {
+              "box-shadow" : "0px 2px 4px 0px #00000024;"
+            },
+            "actions" : { },
+            "settings" : {
+              "dataZoom" : false,
+              "showLegend" : false,
+              "legendConfig" : {
+                "position" : "top",
+                "sortDataKeys" : false,
+                "showMin" : false,
+                "showMax" : false,
+                "showAvg" : true,
+                "showTotal" : false,
+                "showLatest" : false
+              },
+              "xAxis" : {
+                "show" : true,
+                "position" : "bottom"
+              },
+              "yAxis" : {
+                "show" : true,
+                "position" : "left"
+              },
+              "yAxes" : {
+                "rate" : {
+                  "id" : "rate",
+                  "label" : "Occupancy Rate",
+                  "position" : "left",
+                  "min" : 0,
+                  "max" : 100,
+                  "units" : "",
+                  "decimals" : 1,
+                  "order" : 0
+                },
+                "count" : {
+                  "id" : "count",
+                  "label" : "Occupied Spaces",
+                  "position" : "right",
+                  "min" : null,
+                  "max" : null,
+                  "units" : "",
+                  "decimals" : 0,
+                  "order" : 1
+                }
+              }
+            },
+            "datasources" : [ {
+              "type" : "entity",
+              "dataKeys" : [ {
+                "name" : "occupancyRate",
+                "label" : "Occupancy Rate",
+                "type" : "timeseries",
+                "units" : "",
+                "decimals" : 1,
+                "color" : "#2196F3",
+                "settings" : {
+                  "yAxisId" : "rate",
+                  "showLegend" : true
+                }
+              }, {
+                "name" : "occupiedSpaces",
+                "label" : "Occupied Spaces",
+                "type" : "timeseries",
+                "units" : "",
+                "decimals" : 0,
+                "color" : "#4CAF50",
+                "settings" : {
+                  "yAxisId" : "count",
+                  "showLegend" : true
+                }
+              } ],
+              "entityAliasId" : "418a0484-383d-49fe-99c9-ceea4361567f"
+            } ]
+          },
+          "id" : "f8a8734f-d189-41c2-a54d-4d4a5a5570f0",
+          "typeFullFqn" : "system.time_series_chart",
+          "type" : "timeseries"
+        },
+        "5ff43c10-0f3d-45a9-bbe6-96b4b77359d5" : {
+          "sizeX" : 12,
+          "sizeY" : 1,
+          "row" : 0,
+          "col" : 0,
+          "config" : {
+            "configMode" : "basic",
+            "title" : "Current Price",
+            "showTitle" : false,
+            "dropShadow" : false,
+            "enableFullscreen" : false,
+            "enableDataExport" : false,
+            "padding" : "0px",
+            "margin" : "0px",
+            "borderRadius" : "8px",
+            "widgetStyle" : {
+              "box-shadow" : "0px 2px 4px 0px #00000024;"
+            },
+            "widgetCss" : "tb-icon {\n  display: inline-flex;\n  justify-content: center;\n  align-items: center;\n  border-radius: 50%;\n  width: 40px!important;\n  height: 40px!important;\n  background-color: var(--tb-primary-50);\n}\n\n.tb-value-card-icon-row {\n    width: 50%;\n    justify-content: space-between;\n}\n",
+            "units" : "$",
+            "decimals" : 2,
+            "actions" : { },
+            "settings" : {
+              "layout" : "horizontal",
+              "showLabel" : true,
+              "labelColor" : {
+                "type" : "constant",
+                "color" : "#000000DE"
+              },
+              "showIcon" : true,
+              "icon" : "garage",
+              "iconColor" : {
+                "type" : "constant",
+                "color" : "var(--tb-primary-500)"
+              },
+              "iconSize" : 24,
+              "iconSizeUnit" : "px",
+              "valueColor" : {
+                "type" : "constant",
+                "color" : "#000000DE"
+              },
+              "valueFont" : {
+                "size" : 30
+              },
+              "labelFont" : {
+                "size" : 20
+              },
+              "showDate" : false,
+              "autoScale" : true
+            },
+            "datasources" : [ {
+              "type" : "entity",
+              "dataKeys" : [ {
+                "name" : "currentPrice",
+                "label" : "Current Price",
+                "type" : "timeseries",
+                "color" : "var(--tb-primary-500)",
+                "settings" : { }
+              } ],
+              "entityAliasId" : "418a0484-383d-49fe-99c9-ceea4361567f"
+            } ]
+          },
+          "id" : "5ff43c10-0f3d-45a9-bbe6-96b4b77359d5",
+          "typeFullFqn" : "system.cards.horizontal_value_card",
+          "type" : "latest"
+        },
+        "e3a6e6fa-ac87-4cb9-a0e0-e59a16cd8d89" : {
+          "sizeX" : 12,
+          "sizeY" : 6,
+          "row" : 0,
+          "col" : 12,
+          "config" : {
+            "configMode" : "basic",
+            "title" : "Price History Chart",
+            "titleFont" : {
+              "size" : 21,
+              "sizeUnit" : "px",
+              "weight" : "500",
+              "lineHeight" : "22px"
+            },
+            "showTitle" : true,
+            "dropShadow" : false,
+            "useDashboardTimewindow" : true,
+            "timewindow" : {
+              "selectedTab" : 0,
+              "realtime" : {
+                "interval" : 1000,
+                "timewindowMs" : 60000,
+                "realtimeType" : 0
+              },
+              "aggregation" : {
+                "type" : "AVG"
+              }
+            },
+            "padding" : "0px",
+            "margin" : "0px",
+            "borderRadius" : "8px",
+            "widgetStyle" : {
+              "box-shadow" : "0px 2px 4px 0px #00000024;"
+            },
+            "actions" : { },
+            "settings" : {
+              "dataZoom" : false,
+              "showLegend" : false,
+              "legendConfig" : {
+                "position" : "top",
+                "sortDataKeys" : false,
+                "showMin" : false,
+                "showMax" : false,
+                "showAvg" : true,
+                "showTotal" : false,
+                "showLatest" : false
+              },
+              "xAxis" : {
+                "show" : true,
+                "position" : "bottom"
+              },
+              "yAxis" : {
+                "show" : true,
+                "position" : "left"
+              },
+              "yAxes" : {
+                "default" : {
+                  "id" : "default",
+                  "label" : "Price",
+                  "position" : "left",
+                  "min" : null,
+                  "max" : null,
+                  "units" : "",
+                  "decimals" : 1,
+                  "order" : 0
+                }
+              }
+            },
+            "datasources" : [ {
+              "type" : "entity",
+              "dataKeys" : [ {
+                "name" : "currentPrice",
+                "label" : "Current Price",
+                "type" : "timeseries",
+                "units" : "",
+                "decimals" : 1,
+                "color" : "#2196F3",
+                "settings" : {
+                  "yAxisId" : "default",
+                  "showLegend" : true
+                }
+              } ],
+              "entityAliasId" : "418a0484-383d-49fe-99c9-ceea4361567f"
+            } ]
+          },
+          "id" : "e3a6e6fa-ac87-4cb9-a0e0-e59a16cd8d89",
+          "typeFullFqn" : "system.time_series_chart",
+          "type" : "timeseries"
+        },
+        "1d2c8901-0b20-4078-a7ee-7c6236282698" : {
+          "sizeX" : 24,
+          "sizeY" : 11,
+          "row" : 0,
+          "col" : 0,
+          "config" : {
+            "configMode" : "basic",
+            "title" : "Booking Status History",
+            "titleFont" : {
+              "size" : 21,
+              "sizeUnit" : "px",
+              "weight" : "500",
+              "lineHeight" : "22px"
+            },
+            "showTitle" : true,
+            "dropShadow" : false,
+            "useDashboardTimewindow" : true,
+            "timewindow" : {
+              "selectedTab" : 0,
+              "realtime" : {
+                "interval" : 1000,
+                "timewindowMs" : 60000,
+                "realtimeType" : 0
+              },
+              "aggregation" : {
+                "type" : "AVG"
+              }
+            },
+            "padding" : "0px",
+            "margin" : "0px",
+            "borderRadius" : "8px",
+            "widgetStyle" : {
+              "box-shadow" : "0px 2px 4px 0px #00000024;"
+            },
+            "actions" : { },
+            "settings" : {
+              "dataZoom" : false,
+              "showLegend" : false,
+              "legendConfig" : {
+                "position" : "top",
+                "sortDataKeys" : false,
+                "showMin" : false,
+                "showMax" : false,
+                "showAvg" : true,
+                "showTotal" : false,
+                "showLatest" : false
+              },
+              "xAxis" : {
+                "show" : true,
+                "position" : "bottom"
+              },
+              "yAxis" : {
+                "show" : true,
+                "position" : "left"
+              },
+              "yAxes" : {
+                "default" : {
+                  "id" : "default",
+                  "label" : "Status",
+                  "position" : "left",
+                  "min" : null,
+                  "max" : null,
+                  "units" : null,
+                  "decimals" : null,
+                  "order" : 0
+                }
+              },
+              "states" : [ {
+                "label" : "Pending",
+                "value" : 0,
+                "sourceType" : "constant",
+                "sourceValue" : "pending"
+              }, {
+                "label" : "Confirmed",
+                "value" : 1,
+                "sourceType" : "constant",
+                "sourceValue" : "confirmed"
+              }, {
+                "label" : "Active",
+                "value" : 2,
+                "sourceType" : "constant",
+                "sourceValue" : "active"
+              }, {
+                "label" : "Completed",
+                "value" : 3,
+                "sourceType" : "constant",
+                "sourceValue" : "completed"
+              } ]
+            },
+            "datasources" : [ {
+              "type" : "entity",
+              "dataKeys" : [ {
+                "name" : "bookingStatus",
+                "label" : "Booking Status",
+                "type" : "timeseries",
+                "decimals" : 0,
+                "color" : "#2196F3",
+                "settings" : {
+                  "yAxisId" : "default",
+                  "showLegend" : true
+                }
+              } ],
+              "entityAliasId" : "a2005a6e-3608-424d-a331-1da0caa47329"
+            } ]
+          },
+          "id" : "1d2c8901-0b20-4078-a7ee-7c6236282698",
+          "typeFullFqn" : "system.state_chart",
+          "type" : "timeseries"
+        },
+        "1d253184-00fb-410d-84f0-34c9fde1cf38" : {
+          "sizeX" : 24,
+          "sizeY" : 5,
+          "row" : 6,
+          "col" : 0,
+          "config" : {
+            "configMode" : "basic",
+            "title" : "Occupancy Rate vs Predicted Tomorrow",
+            "titleFont" : {
+              "size" : 21,
+              "sizeUnit" : "px",
+              "weight" : "500",
+              "lineHeight" : "22px"
+            },
+            "showTitle" : true,
+            "dropShadow" : false,
+            "useDashboardTimewindow" : true,
+            "timewindow" : {
+              "selectedTab" : 0,
+              "realtime" : {
+                "interval" : 1000,
+                "timewindowMs" : 60000,
+                "realtimeType" : 0
+              },
+              "aggregation" : {
+                "type" : "AVG"
+              }
+            },
+            "padding" : "0px",
+            "margin" : "0px",
+            "borderRadius" : "8px",
+            "widgetStyle" : {
+              "box-shadow" : "0px 2px 4px 0px #00000024;"
+            },
+            "actions" : { },
+            "settings" : {
+              "dataZoom" : false,
+              "showLegend" : false,
+              "legendConfig" : {
+                "position" : "top",
+                "sortDataKeys" : false,
+                "showMin" : false,
+                "showMax" : false,
+                "showAvg" : true,
+                "showTotal" : false,
+                "showLatest" : false
+              },
+              "xAxis" : {
+                "show" : true,
+                "position" : "bottom"
+              },
+              "yAxis" : {
+                "show" : true,
+                "position" : "left"
+              },
+              "yAxes" : {
+                "default" : {
+                  "id" : "default",
+                  "label" : "Occupancy (%)",
+                  "position" : "left",
+                  "min" : 0,
+                  "max" : 100,
+                  "units" : "%",
+                  "decimals" : 1,
+                  "order" : 0
+                }
+              }
+            },
+            "datasources" : [ {
+              "type" : "entity",
+              "dataKeys" : [ {
+                "name" : "occupancyRate",
+                "label" : "Current Occupancy",
+                "type" : "timeseries",
+                "units" : "%",
+                "decimals" : 1,
+                "color" : "#2196F3",
+                "settings" : {
+                  "yAxisId" : "default",
+                  "showLegend" : true
+                }
+              }, {
+                "name" : "predictedOccupancyTomorrow",
+                "label" : "Predicted Occupancy (Tomorrow)",
+                "type" : "timeseries",
+                "units" : "%",
+                "decimals" : 1,
+                "color" : "#4CAF50",
+                "settings" : {
+                  "yAxisId" : "default",
+                  "showLegend" : true
+                }
+              } ],
+              "entityAliasId" : "418a0484-383d-49fe-99c9-ceea4361567f"
+            } ]
+          },
+          "id" : "1d253184-00fb-410d-84f0-34c9fde1cf38",
+          "typeFullFqn" : "system.time_series_chart",
+          "type" : "timeseries"
+        },
+        "7404d484-101a-498a-a688-8373f3aafadf" : {
+          "sizeX" : 24,
+          "sizeY" : 14,
+          "row" : 1,
+          "col" : 0,
+          "config" : {
+            "configMode" : "basic",
+            "titleFont" : {
+              "size" : 21,
+              "sizeUnit" : "px",
+              "weight" : "500",
+              "lineHeight" : "22px"
+            },
+            "showTitle" : false,
+            "dropShadow" : false,
+            "enableFullscreen" : false,
+            "enableDataExport" : false,
+            "backgroundColor" : "#FFFFFF00",
+            "padding" : "0px",
+            "borderRadius" : "8px",
+            "actions" : { },
+            "settings" : {
+              "useMarkdownTextFunction" : true,
+              "markdownTextFunction" : "let subState = ctx.stateController.getStateParams().subStateId || \"garage-statistics\";\n\nreturn `<div tb-toast toastTarget=\"layout\" class=\"block\">\n            <tb-dashboard-state class=\"state\" [ctx]=\"ctx\" stateId=\"${subState}\" [syncParentStateParams]=\"true\"></tb-dashboard-state>\n        </div>`;",
+              "applyDefaultMarkdownStyle" : true,
+              "markdownCss" : ".block {\n    flex-grow: 1;\n    width: 100%;\n    height: 100%;\n    display: flex;\n    padding: 0;\n}\n\n.state {\n    flex-grow: 1;\n    padding: 0;\n    width: 100%;\n    height: 100%;\n}"
+            },
+            "datasources" : [ {
+              "type" : "entity",
+              "dataKeys" : [ ],
+              "entityAliasId" : "418a0484-383d-49fe-99c9-ceea4361567f"
+            } ]
+          },
+          "id" : "7404d484-101a-498a-a688-8373f3aafadf",
+          "typeFullFqn" : "system.cards.markdown_card",
+          "type" : "latest"
+        },
+        "7b923852-f1d3-4906-b1d7-0a4f09fe6ebd" : {
+          "sizeX" : 12,
+          "sizeY" : 5,
+          "row" : 6,
+          "col" : 12,
+          "config" : {
+            "configMode" : "basic",
+            "title" : "Personal Bookings",
+            "titleFont" : {
+              "size" : 21,
+              "sizeUnit" : "px",
+              "weight" : "500",
+              "lineHeight" : "22px"
+            },
+            "showTitle" : true,
+            "dropShadow" : false,
+            "enableFullscreen" : false,
+            "enableDataExport" : false,
+            "padding" : "4px",
+            "borderRadius" : "8px",
+            "widgetStyle" : {
+              "box-shadow" : "0px 2px 4px 0px #00000024;"
+            },
+            "actions" : {
+              "rowClick" : [ {
+                "id" : "cdd6d055-942f-4716-8dd7-2cb535937884",
+                "name" : "View Booking Details",
+                "icon" : "arrow_forward",
+                "type" : "openDashboardState",
+                "targetDashboardStateId" : "booking-details",
+                "setEntityId" : true,
+                "stateEntityParamName" : "selectedBookingSystem"
+              } ],
+              "actionCellButton" : [ {
+                "id" : "f1e6df65-a671-42a6-b90b-2fb23e6910d4",
+                "name" : "Edit Booking",
+                "icon" : "edit",
+                "type" : "customPretty",
+                "customFunction" : "let $injector = widgetContext.$scope.$injector;\nlet customDialog = $injector.get(widgetContext.servicesMap.get('customDialog'));\nlet entityService = $injector.get(widgetContext.servicesMap.get('entityService'));\nlet attributeService = $injector.get(widgetContext.servicesMap.get('attributeService'));\nlet entityRelationService = $injector.get(widgetContext.servicesMap.get('entityRelationService'));\nlet entityGroupService = $injector.get(widgetContext.servicesMap.get('entityGroupService'));\n\nlet dialogTitle = \"Edit Booking '${entityName}'\";\nlet createEntity = false;\n\nlet attributeKeys = [];\nlet additionalAttributes = [ ];\nlet additionalTelemetry = [ ];\n\nopenEntityDialog();\n\nfunction openEntityDialog() {\n  customDialog.customDialog(htmlTemplate, EntityDialogController).subscribe();\n}\n\nfunction EntityDialogController(instance) {\n  let vm = instance;\n\n  const currentUser = widgetContext.currentUser;\n\n  if (createEntity) {\n    vm.dialogTitle = dialogTitle;\n  } else {\n    vm.dialogTitle = dialogTitle.replaceAll('${entityName}', entityName);\n  }\n\n  vm.submitTitle = createEntity ? 'Create' : 'Save';\n\n  vm.entityFormGroup = vm.fb.group({\n    entityFields: vm.fb.group({\n      name: [null, [vm.validators.required]],\n      label: [null, []]\n    }),\n    \n  });\n\n  \n\n  if (attributeKeys.length) {\n    vm.entityFormGroup.addControl('attributes',\n      vm.fb.group({\n        \n      })\n    );\n  }\n\n  vm.save = function() {\n    vm.entityFormGroup.markAsPristine();\n    saveEntity().subscribe(\n      function (entity) {\n        widgetContext.rxjs.forkJoin([\n          saveAttributes(entity.id),\n          saveTelemetry(entity.id),\n          createRelations(entity.id),\n          addToEntityGroups(entity.id)\n        ]).subscribe(\n          function () {\n            widgetContext.updateAliases();\n            vm.dialogRef.close(null);\n          }\n        );\n      }\n    );\n  };\n\n  vm.cancel = function() {\n    vm.dialogRef.close(null);\n  };\n\n  if (!createEntity) {\n    loadEntity();\n  }\n\n  function saveEntity() {\n    const entityFields = vm.entityFormGroup.get('entityFields').value;\n    let entity;\n    if (createEntity) {\n      entity = entityFields;\n      let entityType = null;\n      let entitySubType = null;\n      let entityOwner = null;\n      entity.id = {\n        entityType: entityType\n      };\n      \n      \n      if (entitySubType) {\n        entity.type = entitySubType;\n      }\n      \n      if (entityOwner) {\n        let stateParams = widgetContext.stateController.getStateParams();\n        if (stateParams[entityOwner]) {\n          stateParams = stateParams[entityOwner];\n        }\n        let ownerId = stateParams.entityId;\n        if (ownerId && ownerId.entityType === 'CUSTOMER') {\n          entity.customerId = ownerId;\n        }\n      }\n      if (!entity.customerId && widgetContext.currentUser.authority === 'CUSTOMER_USER') {\n        entity.customerId = {id: widgetContext.currentUser.customerId, entityType: 'CUSTOMER'};\n      }\n      if (entityType === 'USER') {\n        if (entity.customerId) {\n          entity.authority = 'CUSTOMER_USER';\n        } else {\n          entity.authority = 'TENANT_ADMIN';\n        }\n      }\n    } else {\n      entity = {...vm.entity, ...entityFields};\n    }\n    return entityService.saveEntity(entity);\n  }\n\n  function saveAttributes(entityId) {\n    if (attributeKeys.length || additionalAttributes.length) {\n      let attributes = attributeKeys.length ? vm.entityFormGroup.get('attributes').value : [];\n      let attributesArray = [];\n      for (let key in attributes) {\n        if (attributes[key] !== null) {\n          attributesArray.push({key: key, value: attributes[key]});\n        }\n      }\n      if (additionalAttributes.length) {\n        additionalAttributes.forEach(attribute => {\n          attributesArray.push({key: attribute.key, value: attribute.value});\n        })\n      }\n      if (attributesArray.length > 0) {\n        return attributeService.saveEntityAttributes(entityId, \"SERVER_SCOPE\", attributesArray);\n      } else {\n        return widgetContext.rxjs.of([]);\n      }\n    } else {\n      return widgetContext.rxjs.of([]);\n    }\n  }\n\n    function saveTelemetry(entityId) {\n      if (additionalTelemetry.length) {\n        let telemetryArray = [];\n        additionalTelemetry.forEach(telemetry => {\n          telemetryArray.push({key: telemetry.key, value: telemetry.value});\n        })\n        return attributeService.saveEntityTimeseries(entityId, \"LATEST_TELEMETRY\", telemetryArray);\n      } else {\n        return widgetContext.rxjs.of([]);\n      }\n    }\n\n  function createRelations(entityId) {\n    let singleEntityId;\n    for (const value of Object.values(widgetContext.aliasController.entityAliases)) {\n      if (value.filter.type === 'singleEntity') {\n        singleEntityId = value.filter.singleEntity ?? null;\n      }\n    }\n\n    if (createEntity) {\n      let createRelationsObservables = [];\n      \n      \n      if (createRelationsObservables.length) {\n        return widgetContext.rxjs.forkJoin(createRelationsObservables);\n      } else {\n        return widgetContext.rxjs.of([]);\n      }\n    } else {\n      return widgetContext.rxjs.of([]);\n    }\n  }\n\n  function addToEntityGroups(entityId) {\n    if (createEntity) {\n      let addToGroupObservables = [];\n      let targetEntityGroups = null;\n      \n      let entityOwner = null;\n      let ownerId;\n      if (entityOwner) {\n        let stateParams = widgetContext.stateController.getStateParams();\n        if (stateParams[entityOwner]) {\n            stateParams = stateParams[entityOwner];\n        }\n        ownerId = stateParams.entityId;\n      }\n      if (targetEntityGroups && targetEntityGroups.length) {\n        for (let targetEntityGroup of targetEntityGroups) {\n          addToGroupObservables.push(getOrCreateEntityGroupByName(targetEntityGroup, entityId.entityType, ownerId).pipe(\n            widgetContext.rxjs.switchMap((group) => {\n              if (group) {\n                return entityGroupService.addEntityToEntityGroup(group.id.id, entityId.id);\n              } else {\n                return widgetContext.rxjs.of(null);\n              }\n            })\n          ));\n        }\n      }\n      if (addToGroupObservables.length) {\n        return widgetContext.rxjs.forkJoin(addToGroupObservables);\n      } else {\n        return widgetContext.rxjs.of([]);\n      }\n    } else {\n      return widgetContext.rxjs.of([]);\n    }\n  }\n\n  function loadEntity() {\n    entityService.getEntity(entityId.entityType, entityId.id).subscribe(\n      function(entity) {\n        vm.entity = entity;\n        vm.entityFormGroup.get('entityFields').patchValue(entity);\n        if (attributeKeys.length) {\n          attributeService.getEntityAttributes(entityId, 'SERVER_SCOPE', attributeKeys).subscribe(\n            function (attributes) {\n              let entityAttributes = {};\n              for (var i = 0; i < attributes.length; i++) {\n                entityAttributes[attributes[i].key] = attributes[i].value;\n              }\n              vm.entityFormGroup.get('attributes').patchValue(entityAttributes);\n            }\n          );\n        }\n      }\n    );\n  }\n\n  function getOrCreateEntityGroupByName(groupName, groupType, ownerId) {\n    var entityGroupsPageLink = widgetContext.pageLink(10, 0, groupName);\n    let findEntyGroup$;\n    if (ownerId) {\n      findEntyGroup$ = entityGroupService.getEntityGroupsByOwnerIdAndPageLink(ownerId.entityType, ownerId.id, groupType, entityGroupsPageLink, {ignoreLoading: true});\n    } else {\n      findEntyGroup$ = entityGroupService.getEntityGroupsByPageLink(entityGroupsPageLink, groupType, {ignoreLoading: true});\n    }\n    return findEntyGroup$.pipe(\n      widgetContext.rxjs.switchMap((data) => {\n        if (data.data.length) {\n          const findGroup = data.data.find((group) => group.name === groupName);\n          if (findGroup) {\n            return widgetContext.rxjs.of(findGroup);\n          }\n        }\n        const entityGroup = {\n          name: groupName,\n          type: groupType,\n        }\n        if (ownerId) {\n          entityGroup.ownerId = ownerId;\n        }\n        return entityGroupService.saveEntityGroup(entityGroup, {ignoreLoading: true}).pipe(\n          widgetContext.rxjs.catchError(() => widgetContext.rxjs.of(null))\n        );\n      })\n    );\n  }\n}",
+                "customHtml" : "<form #entityForm=\"ngForm\" [formGroup]=\"entityFormGroup\"\n      (ngSubmit)=\"save()\" class=\"entity-form\" style=\"width: 600px;\">\n  <mat-toolbar color=\"primary\">\n    <h2>{{ dialogTitle }}</h2>\n    <span class=\"flex-1\"></span>\n    <button mat-icon-button (click)=\"cancel()\" type=\"button\">\n      <mat-icon class=\"material-icons\">close</mat-icon>\n    </button>\n  </mat-toolbar>\n  <mat-progress-bar color=\"warn\" mode=\"indeterminate\" *ngIf=\"isLoading$ | async\">\n  </mat-progress-bar>\n  <div style=\"height: 4px;\" *ngIf=\"!(isLoading$ | async)\"></div>\n  <div mat-dialog-content>\n    <fieldset formGroupName=\"entityFields\" class=\"tb-form-panel outlined\" [disabled]=\"isLoading$ | async\"><mat-form-field appearance=\"outline\">\n  <mat-label>Name</mat-label>\n  <input matInput formControlName=\"name\" required=\"required\">\n  @if(entityFormGroup.get(\"entityFields\").get(\"name\").hasError(\"required\")) {\n    <mat-error>Name is required.</mat-error>\n  }\n</mat-form-field>\n\n<mat-form-field appearance=\"outline\">\n  <mat-label>Label</mat-label>\n  <input matInput formControlName=\"label\">\n</mat-form-field>\n</fieldset>\n    \n    \n    \n  </div>\n  <div mat-dialog-actions class=\"flex items-center justify-end\">\n    <button mat-button color=\"primary\"\n            type=\"button\"\n            [disabled]=\"(isLoading$ | async)\"\n            (click)=\"cancel()\" cdkFocusInitial>\n      Cancel\n    </button>\n    <button mat-button mat-raised-button color=\"primary\"\n            type=\"submit\"\n            [disabled]=\"(isLoading$ | async) || entityForm.invalid || !entityForm.dirty\">\n      {{ submitTitle }}\n    </button>\n  </div>\n</form>\n"
+              } ]
+            },
+            "settings" : {
+              "entitiesTitle" : "Personal Bookings",
+              "displayEntityName" : false,
+              "displayEntityType" : false
+            },
+            "datasources" : [ {
+              "type" : "entity",
+              "dataKeys" : [ {
+                "name" : "name",
+                "label" : "Booking Name",
+                "type" : "entityField",
+                "color" : "var(--tb-primary-500)",
+                "settings" : { }
+              }, {
+                "name" : "licensePlate",
+                "label" : "License Plate",
+                "type" : "timeseries",
+                "color" : "var(--tb-primary-500)",
+                "settings" : { }
+              }, {
+                "name" : "bookingStart",
+                "label" : "From",
+                "type" : "timeseries",
+                "color" : "var(--tb-primary-500)",
+                "settings" : { }
+              }, {
+                "name" : "bookingEnd",
+                "label" : "Until",
+                "type" : "timeseries",
+                "color" : "var(--tb-primary-500)",
+                "settings" : { }
+              }, {
+                "name" : "bookingStatus",
+                "label" : "Status",
+                "type" : "timeseries",
+                "color" : "var(--tb-primary-500)",
+                "settings" : {
+                  "useCellContentFunction" : true,
+                  "useCellContentFunctionOnExport" : true,
+                  "cellContentFunction" : "let color = '#757575'; let backColor = '#F5F5F5'; let text = value; if (value === 'pending') { color = '#FFA000'; backColor = '#FFF8E1'; } else if (value === 'confirmed') { color = '#1976D2'; backColor = '#E3F2FD'; } else if (value === 'active') { color = '#388E3C'; backColor = '#E8F5E9'; } else if (value === 'completed') { color = '#7B1FA2'; backColor = '#F3E5F5'; } return `<span style=\"font-size:12px;font-weight:600;color:${color};background:${backColor};padding:6px 10px;border-radius:4px;text-transform:uppercase;\">${text}</span>`;"
+                }
+              } ],
+              "entityAliasId" : "3d5b897c-1356-47c8-9dec-b23a98ad8143"
+            } ]
+          },
+          "id" : "7b923852-f1d3-4906-b1d7-0a4f09fe6ebd",
+          "typeFullFqn" : "system.cards.entities_table",
+          "type" : "latest"
+        },
+        "3e409132-5f09-48cc-b6be-f66b67eccc53" : {
+          "sizeX" : 12,
+          "sizeY" : 4,
+          "row" : 0,
+          "col" : 12,
+          "config" : {
+            "configMode" : "basic",
+            "title" : "Reservation Summary",
+            "showTitle" : false,
+            "dropShadow" : false,
+            "enableFullscreen" : false,
+            "enableDataExport" : false,
+            "padding" : "10px",
+            "borderRadius" : "8px",
+            "widgetStyle" : {
+              "box-shadow" : "0px 2px 4px 0px #00000024;"
+            },
+            "actions" : { },
+            "settings" : {
+              "useMarkdownTextFunction" : false,
+              "markdownTextPattern" : "<div class=\"value-block flex flex-col justify-between gap-2\"><div class=\"flex flex-1\"><span class=\"title\">Reservation Summary</span></div><div class=\"flex flex-col justify-between gap-1\"><div class=\"flex flex-row justify-between\"><span class=\"label\">Employee ID</span><span class=\"value\">${Employee ID}</span></div><div class=\"flex flex-row justify-between\"><span class=\"label\">Space ID</span><span class=\"value\">${Space ID}</span></div><div class=\"flex flex-row justify-between\"><span class=\"label\">License Plate</span><span class=\"value\">${License Plate}</span></div><div class=\"flex flex-row justify-between\"><span class=\"label\">Status</span><span [ngClass]=\"${Status} === 'active' || ${Status} === 'confirmed' ? 'active' : 'inactive'\" class=\"value\">${Status}</span></div></div></div>",
+              "applyDefaultMarkdownStyle" : false,
+              "markdownCss" : ".label {\n    font-weight: 400;\n    font-size: 16px;\n    line-height: 21px;\n    letter-spacing: 0.2px;\n    color: #424242;\n}\n\n.value {\n    padding: 4px;\n    font-weight: 500;\n    font-size: 16px;\n    line-height: 21px;\n    letter-spacing: 0.2px;\n    color: #212121;\n}\n\n.title {\n    font-weight: 600;\n    font-size: 18px;\n    line-height: 21px;\n    letter-spacing: 0.2px;\n    color: #212121;\n}\n\n.value-block {\n    height: 100%;\n}\n\n.active {\n    border-radius: 6px;\n    background: #303F9F;\n    color: #E8EAF6;\n}\n\n.inactive {\n    border-radius: 6px;\n    background: #F5F5F5;\n    color: #757575;\n}"
+            },
+            "datasources" : [ {
+              "type" : "entity",
+              "dataKeys" : [ {
+                "name" : "employeeId",
+                "label" : "Employee ID",
+                "type" : "timeseries",
+                "color" : "var(--tb-primary-500)",
+                "settings" : { }
+              }, {
+                "name" : "reservedSpaceId",
+                "label" : "Space ID",
+                "type" : "timeseries",
+                "color" : "var(--tb-primary-500)",
+                "settings" : { }
+              }, {
+                "name" : "licensePlate",
+                "label" : "License Plate",
+                "type" : "timeseries",
+                "color" : "var(--tb-primary-500)",
+                "settings" : { }
+              }, {
+                "name" : "bookingStatus",
+                "label" : "Status",
+                "type" : "timeseries",
+                "color" : "var(--tb-primary-500)",
+                "settings" : { }
+              } ],
+              "entityAliasId" : "a2005a6e-3608-424d-a331-1da0caa47329"
+            } ]
+          },
+          "id" : "3e409132-5f09-48cc-b6be-f66b67eccc53",
+          "typeFullFqn" : "system.cards.markdown_card",
+          "type" : "latest"
+        },
+        "f0fc858c-c2b4-4779-9e32-c4537cad51f2" : {
+          "sizeX" : 12,
+          "sizeY" : 4,
+          "row" : 3,
+          "col" : 0,
+          "config" : {
+            "configMode" : "basic",
+            "title" : "Occupied Spaces",
+            "titleFont" : {
+              "size" : 21,
+              "sizeUnit" : "px",
+              "weight" : "500",
+              "lineHeight" : "22px"
+            },
+            "showTitle" : false,
+            "dropShadow" : false,
+            "enableFullscreen" : false,
+            "enableDataExport" : false,
+            "borderRadius" : "8px",
+            "widgetStyle" : {
+              "box-shadow" : "0px 2px 4px 0px #00000024;"
+            },
+            "units" : "spaces",
+            "decimals" : 0,
+            "actions" : { },
+            "settings" : {
+              "minValue" : 0,
+              "maxValue" : 100,
+              "gaugeType" : "arc",
+              "showTitle" : true,
+              "title" : "Occupied Spaces",
+              "titleFont" : {
+                "color" : "#000000DE"
+              },
+              "labelFont" : { },
+              "valueFont" : { },
+              "minMaxFont" : { },
+              "showMinMax" : false,
+              "barColor" : {
+                "type" : "function",
+                "colorFunction" : "if (typeof value === 'number') { if (value >= 90) return '#F44336'; if (value >= 70) return '#FF9800'; return '#4CAF50'; } return '#607D8B';"
+              },
+              "showValue" : true
+            },
+            "datasources" : [ {
+              "type" : "entity",
+              "dataKeys" : [ {
+                "name" : "occupiedSpaces",
+                "label" : "Occupied",
+                "type" : "timeseries",
+                "color" : "#000000DE",
+                "settings" : { }
+              } ],
+              "entityAliasId" : "418a0484-383d-49fe-99c9-ceea4361567f"
+            } ]
+          },
+          "id" : "f0fc858c-c2b4-4779-9e32-c4537cad51f2",
+          "typeFullFqn" : "system.digital_gauges.simple_gauge_justgage",
+          "type" : "latest"
+        },
+        "5ed5cd1c-06e2-4631-9eb7-17aabdf9bd9a" : {
+          "sizeX" : 24,
+          "sizeY" : 14,
+          "row" : 1,
+          "col" : 0,
+          "config" : {
+            "configMode" : "basic",
+            "titleFont" : {
+              "size" : 21,
+              "sizeUnit" : "px",
+              "weight" : "500",
+              "lineHeight" : "22px"
+            },
+            "showTitle" : false,
+            "dropShadow" : false,
+            "enableFullscreen" : false,
+            "enableDataExport" : false,
+            "backgroundColor" : "#FFFFFF00",
+            "padding" : "0px",
+            "borderRadius" : "8px",
+            "actions" : { },
+            "settings" : {
+              "useMarkdownTextFunction" : true,
+              "markdownTextFunction" : "let subState = ctx.stateController.getStateParams().subStateId || \"booking-statistics\";\n\nreturn `<div tb-toast toastTarget=\"layout\" class=\"block\">\n            <tb-dashboard-state class=\"state\" [ctx]=\"ctx\" stateId=\"${subState}\" [syncParentStateParams]=\"true\"></tb-dashboard-state>\n        </div>`;",
+              "applyDefaultMarkdownStyle" : true,
+              "markdownCss" : ".block {\n    flex-grow: 1;\n    width: 100%;\n    height: 100%;\n    display: flex;\n    padding: 0;\n}\n\n.state {\n    flex-grow: 1;\n    padding: 0;\n    width: 100%;\n    height: 100%;\n}"
+            },
+            "datasources" : [ {
+              "type" : "entity",
+              "dataKeys" : [ ],
+              "entityAliasId" : "a2005a6e-3608-424d-a331-1da0caa47329"
+            } ]
+          },
+          "id" : "5ed5cd1c-06e2-4631-9eb7-17aabdf9bd9a",
+          "typeFullFqn" : "system.cards.markdown_card",
+          "type" : "latest"
+        },
+        "7a491321-145d-428a-9b4b-a58dd71ba4d9" : {
+          "sizeX" : 4,
+          "sizeY" : 1,
+          "row" : 0,
+          "col" : 16,
+          "config" : {
+            "configMode" : "basic",
+            "title" : "Overview",
+            "showTitle" : false,
+            "dropShadow" : false,
+            "enableFullscreen" : false,
+            "enableDataExport" : false,
+            "backgroundColor" : "#FFFFF00",
+            "padding" : "0px",
+            "borderRadius" : "8px",
+            "actions" : {
+              "click" : [ {
+                "id" : null,
+                "name" : null,
+                "icon" : null,
+                "type" : "custom",
+                "customFunction" : "let params = widgetContext.stateController.getStateParams();\n\nparams.subStateId = \"garage-overview\";\n\nwidgetContext.stateController.updateState(widgetContext.stateController.getStateId(), params);\nwidgetContext.updateAliases();"
+              } ]
+            },
+            "settings" : {
+              "appearance" : {
+                "type" : "outlined",
+                "showLabel" : true,
+                "label" : "Overview",
+                "showIcon" : true,
+                "icon" : "garage",
+                "mainColor" : "var(--tb-primary-500)",
+                "backgroundColor" : "#FFFFFF00",
+                "customStyle" : { }
+              },
+              "activatedState" : {
+                "action" : "GET_DASHBOARD_STATE_OBJECT",
+                "defaultValue" : false,
+                "dataToValue" : {
+                  "type" : "FUNCTION",
+                  "compareToValue" : true,
+                  "dataToValueFunction" : "return data.params.subStateId === \"garage-overview\";"
+                }
+              },
+              "disabledState" : {
+                "action" : "DO_NOTHING"
+              }
+            },
+            "datasources" : [ ]
+          },
+          "id" : "7a491321-145d-428a-9b4b-a58dd71ba4d9",
+          "typeFullFqn" : "system.action_button",
+          "type" : "latest"
+        },
+        "4de7661a-a547-4925-af14-e68b901609e0" : {
+          "sizeX" : 4,
+          "sizeY" : 1,
+          "row" : 0,
+          "col" : 19,
+          "config" : {
+            "configMode" : "basic",
+            "title" : "connect-booking-device",
+            "titleFont" : {
+              "size" : 21,
+              "sizeUnit" : "px",
+              "weight" : "500",
+              "lineHeight" : "22px"
+            },
+            "showTitle" : false,
+            "dropShadow" : false,
+            "enableFullscreen" : false,
+            "enableDataExport" : false,
+            "backgroundColor" : "#FFFFFF00",
+            "padding" : "0px",
+            "borderRadius" : "8px",
+            "actions" : {
+              "click" : [ {
+                "id" : null,
+                "name" : "Open connectivity documentation",
+                "icon" : null,
+                "openNewBrowserTab" : true,
+                "url" : "https://thingsboard.io/docs/paas/eu/getting-started-guides/connectivity/",
+                "type" : "openURL"
+              } ]
+            },
+            "settings" : {
+              "appearance" : {
+                "type" : "filled",
+                "showLabel" : true,
+                "label" : "How to connect real devices?",
+                "showIcon" : true,
+                "icon" : "help_outline",
+                "mainColor" : "var(--tb-primary-500)",
+                "backgroundColor" : "#FFFFFF",
+                "customStyle" : { }
+              },
+              "activatedState" : {
+                "action" : "DO_NOTHING",
+                "defaultValue" : false
+              },
+              "disabledState" : {
+                "action" : "DO_NOTHING",
+                "defaultValue" : false
+              }
+            },
+            "datasources" : [ ]
+          },
+          "id" : "4de7661a-a547-4925-af14-e68b901609e0",
+          "typeFullFqn" : "system.action_button",
+          "type" : "latest"
+        },
+        "73e4851a-634e-45f8-b33e-e3df3aac3a7b" : {
+          "sizeX" : 12,
+          "sizeY" : 2,
+          "row" : 0,
+          "col" : 0,
+          "config" : {
+            "configMode" : "basic",
+            "title" : "Booking Status",
+            "showTitle" : false,
+            "dropShadow" : false,
+            "enableFullscreen" : false,
+            "enableDataExport" : false,
+            "padding" : "0px",
+            "margin" : "0px",
+            "borderRadius" : "8px",
+            "widgetStyle" : {
+              "box-shadow" : "0px 2px 4px 0px #00000024;"
+            },
+            "widgetCss" : "tb-icon {\n  display: inline-flex;\n  justify-content: center;\n  align-items: center;\n  border-radius: 50%;\n  width: 40px!important;\n  height: 40px!important;\n  background-color: var(--tb-primary-50);\n}\n\n.tb-value-card-icon-row {\n    width: 50%;\n    justify-content: space-between;\n}\n",
+            "units" : "",
+            "decimals" : 0,
+            "actions" : { },
+            "settings" : {
+              "layout" : "horizontal",
+              "showLabel" : true,
+              "labelColor" : {
+                "type" : "constant",
+                "color" : "#000000DE"
+              },
+              "showIcon" : true,
+              "icon" : "info",
+              "iconColor" : {
+                "type" : "constant",
+                "color" : "var(--tb-primary-500)"
+              },
+              "iconSize" : 24,
+              "iconSizeUnit" : "px",
+              "valueColor" : {
+                "type" : "constant",
+                "color" : "#000000DE"
+              },
+              "valueFont" : {
+                "size" : 30
+              },
+              "labelFont" : {
+                "size" : 20
+              },
+              "showDate" : false,
+              "autoScale" : true
+            },
+            "datasources" : [ {
+              "type" : "entity",
+              "dataKeys" : [ {
+                "name" : "bookingStatus",
+                "label" : "Booking Status",
+                "type" : "timeseries",
+                "color" : "var(--tb-primary-500)",
+                "settings" : { }
+              } ],
+              "entityAliasId" : "a2005a6e-3608-424d-a331-1da0caa47329"
+            } ]
+          },
+          "id" : "73e4851a-634e-45f8-b33e-e3df3aac3a7b",
+          "typeFullFqn" : "system.cards.horizontal_value_card",
+          "type" : "latest"
+        },
+        "25bf04d6-8c40-4bae-94ac-7c5217e807c6" : {
+          "sizeX" : 12,
+          "sizeY" : 4,
+          "row" : 7,
+          "col" : 0,
+          "config" : {
+            "configMode" : "basic",
+            "title" : "Alarms",
+            "titleFont" : {
+              "size" : 21,
+              "sizeUnit" : "px",
+              "weight" : "500",
+              "lineHeight" : "22px"
+            },
+            "showTitle" : true,
+            "dropShadow" : false,
+            "useDashboardTimewindow" : true,
+            "timewindow" : {
+              "selectedTab" : 0,
+              "realtime" : {
+                "interval" : 1000,
+                "timewindowMs" : 60000,
+                "realtimeType" : 0
+              },
+              "aggregation" : {
+                "type" : "AVG"
+              }
+            },
+            "padding" : "4px",
+            "borderRadius" : "8px",
+            "widgetStyle" : {
+              "box-shadow" : "0px 2px 4px 0px #00000024;"
+            },
+            "actions" : { },
+            "settings" : {
+              "alarmsTitle" : "Alarms",
+              "enableSelection" : true,
+              "enableSearch" : true
+            },
+            "alarmSource" : {
+              "type" : "entity",
+              "name" : "alarms",
+              "dataKeys" : [ {
+                "name" : "createdTime",
+                "label" : "Created Time",
+                "type" : "alarm",
+                "color" : "var(--tb-primary-500)",
+                "settings" : { }
+              }, {
+                "name" : "originator",
+                "label" : "Originator",
+                "type" : "alarm",
+                "color" : "var(--tb-primary-500)",
+                "settings" : { }
+              }, {
+                "name" : "type",
+                "label" : "Type",
+                "type" : "alarm",
+                "color" : "var(--tb-primary-500)",
+                "settings" : { }
+              }, {
+                "name" : "severity",
+                "label" : "Severity",
+                "type" : "alarm",
+                "color" : "var(--tb-primary-500)",
+                "settings" : { }
+              }, {
+                "name" : "status",
+                "label" : "Status",
+                "type" : "alarm",
+                "color" : "var(--tb-primary-500)",
+                "settings" : { }
+              } ],
+              "entityAliasId" : "418a0484-383d-49fe-99c9-ceea4361567f"
+            },
+            "alarmFilterConfig" : {
+              "typeList" : [ ],
+              "statusList" : [ "ACTIVE" ],
+              "severityList" : [ "CRITICAL", "MAJOR", "MINOR", "WARNING", "INDETERMINATE" ],
+              "searchPropagatedAlarms" : true
+            },
+            "datasources" : [ ]
+          },
+          "id" : "25bf04d6-8c40-4bae-94ac-7c5217e807c6",
+          "typeFullFqn" : "system.alarm_widgets.alarms_table",
+          "type" : "alarm"
+        },
+        "9c92b59f-bca5-4ef6-858f-156cfe463061" : {
+          "sizeX" : 12,
+          "sizeY" : 2,
+          "row" : 2,
+          "col" : 0,
+          "config" : {
+            "configMode" : "basic",
+            "title" : "Booking Start Time",
+            "showTitle" : false,
+            "dropShadow" : false,
+            "enableFullscreen" : false,
+            "enableDataExport" : false,
+            "padding" : "0px",
+            "margin" : "0px",
+            "borderRadius" : "8px",
+            "widgetStyle" : {
+              "box-shadow" : "0px 2px 4px 0px #00000024;"
+            },
+            "widgetCss" : "tb-icon {\n  display: inline-flex;\n  justify-content: center;\n  align-items: center;\n  border-radius: 50%;\n  width: 40px!important;\n  height: 40px!important;\n  background-color: var(--tb-primary-50);\n}\n\n.tb-value-card-icon-row {\n    width: 50%;\n    justify-content: space-between;\n}\n",
+            "units" : "",
+            "decimals" : 0,
+            "actions" : { },
+            "settings" : {
+              "layout" : "horizontal",
+              "showLabel" : true,
+              "labelColor" : {
+                "type" : "constant",
+                "color" : "#000000DE"
+              },
+              "showIcon" : true,
+              "icon" : "schedule",
+              "iconColor" : {
+                "type" : "constant",
+                "color" : "var(--tb-primary-500)"
+              },
+              "iconSize" : 24,
+              "iconSizeUnit" : "px",
+              "valueColor" : {
+                "type" : "constant",
+                "color" : "#000000DE"
+              },
+              "valueFont" : {
+                "size" : 30
+              },
+              "labelFont" : {
+                "size" : 20
+              },
+              "showDate" : false,
+              "autoScale" : true
+            },
+            "datasources" : [ {
+              "type" : "entity",
+              "dataKeys" : [ {
+                "name" : "bookingStart",
+                "label" : "Booking Start",
+                "type" : "timeseries",
+                "color" : "var(--tb-primary-500)",
+                "settings" : { }
+              } ],
+              "entityAliasId" : "a2005a6e-3608-424d-a331-1da0caa47329"
+            } ]
+          },
+          "id" : "9c92b59f-bca5-4ef6-858f-156cfe463061",
+          "typeFullFqn" : "system.cards.horizontal_value_card",
+          "type" : "latest"
+        },
+        "178a1b9a-c20a-40cf-9ddd-e167542a4d7e" : {
+          "sizeX" : 16,
+          "sizeY" : 1,
+          "row" : 0,
+          "col" : 0,
+          "config" : {
+            "configMode" : "basic",
+            "title" : "Garage Information",
+            "showTitle" : false,
+            "dropShadow" : false,
+            "enableFullscreen" : false,
+            "enableDataExport" : false,
+            "backgroundColor" : "#FFFFFF00",
+            "padding" : "0px",
+            "borderRadius" : "8px",
+            "actions" : { },
+            "settings" : {
+              "useMarkdownTextFunction" : false,
+              "markdownTextPattern" : "**${Name}** | ${Address}",
+              "applyDefaultMarkdownStyle" : true,
+              "markdownCss" : ".tb-markdown-view p {\n    display: flex;\n    margin: 0;\n    align-items: center;\n    height: 100%;\n    font-size: 28px;\n    font-weight: 500;\n    color: #212121;\n    padding: 0;\n}\n"
+            },
+            "datasources" : [ {
+              "type" : "entity",
+              "dataKeys" : [ {
+                "name" : "name",
+                "label" : "Name",
+                "type" : "entityField",
+                "color" : "var(--tb-primary-500)",
+                "settings" : { }
+              }, {
+                "name" : "address",
+                "label" : "Address",
+                "type" : "attribute",
+                "color" : "var(--tb-primary-500)",
+                "settings" : { }
+              } ],
+              "entityAliasId" : "418a0484-383d-49fe-99c9-ceea4361567f"
+            } ]
+          },
+          "id" : "178a1b9a-c20a-40cf-9ddd-e167542a4d7e",
+          "typeFullFqn" : "system.cards.markdown_card",
+          "type" : "latest"
+        },
+        "48a4320a-5017-4150-b7c7-b51859d01be8" : {
+          "sizeX" : 12,
+          "sizeY" : 2,
+          "row" : 1,
+          "col" : 0,
+          "config" : {
+            "configMode" : "basic",
+            "title" : "Garage Occupancy Rate",
+            "titleFont" : {
+              "size" : 21,
+              "sizeUnit" : "px",
+              "weight" : "500",
+              "lineHeight" : "22px"
+            },
+            "titleColor" : "#000000DE",
+            "showTitle" : true,
+            "dropShadow" : false,
+            "enableFullscreen" : false,
+            "enableDataExport" : false,
+            "borderRadius" : "8px",
+            "widgetStyle" : {
+              "box-shadow" : "0px 2px 4px 0px #00000024;"
+            },
+            "units" : "%",
+            "decimals" : 1,
+            "actions" : { },
+            "settings" : {
+              "layout" : "simplified",
+              "tickMin" : 0,
+              "tickMax" : 100,
+              "autoScale" : true,
+              "showTicks" : false,
+              "barColor" : {
+                "type" : "function",
+                "colorFunction" : "if (typeof value === 'number' && value >= 90) { return '#F44336'; } else if (value >= 70) { return '#FF9800'; } else { return '#4CAF50'; }"
+              }
+            },
+            "datasources" : [ {
+              "type" : "entity",
+              "dataKeys" : [ {
+                "name" : "occupancyRate",
+                "label" : "Occupancy Rate",
+                "type" : "timeseries",
+                "color" : "var(--tb-primary-500)",
+                "settings" : { }
+              } ],
+              "entityAliasId" : "418a0484-383d-49fe-99c9-ceea4361567f"
+            } ]
+          },
+          "id" : "48a4320a-5017-4150-b7c7-b51859d01be8",
+          "typeFullFqn" : "system.progress_bar",
+          "type" : "latest"
+        },
+        "1d50fadb-ab88-43ef-bb40-79c808bcdaa7" : {
+          "sizeX" : 4,
+          "sizeY" : 1,
+          "row" : 0,
+          "col" : 11,
+          "config" : {
+            "configMode" : "basic",
+            "title" : "Overview",
+            "showTitle" : false,
+            "dropShadow" : false,
+            "enableFullscreen" : false,
+            "enableDataExport" : false,
+            "backgroundColor" : "#FFFFF00",
+            "padding" : "0px",
+            "borderRadius" : "8px",
+            "actions" : {
+              "click" : [ {
+                "id" : null,
+                "name" : null,
+                "icon" : null,
+                "type" : "custom",
+                "customFunction" : "let params = widgetContext.stateController.getStateParams();\n\nparams.subStateId = \"booking-overview\";\n\nwidgetContext.stateController.updateState(widgetContext.stateController.getStateId(), params);\nwidgetContext.updateAliases();"
+              } ]
+            },
+            "settings" : {
+              "appearance" : {
+                "type" : "outlined",
+                "showLabel" : true,
+                "label" : "Overview",
+                "showIcon" : true,
+                "icon" : "info",
+                "mainColor" : "var(--tb-primary-500)",
+                "backgroundColor" : "#FFFFFF00",
+                "customStyle" : { }
+              },
+              "activatedState" : {
+                "action" : "GET_DASHBOARD_STATE_OBJECT",
+                "defaultValue" : false,
+                "dataToValue" : {
+                  "type" : "FUNCTION",
+                  "compareToValue" : true,
+                  "dataToValueFunction" : "return data.params.subStateId === \"booking-overview\";"
+                }
+              },
+              "disabledState" : {
+                "action" : "DO_NOTHING"
+              }
+            },
+            "datasources" : [ ]
+          },
+          "id" : "1d50fadb-ab88-43ef-bb40-79c808bcdaa7",
+          "typeFullFqn" : "system.action_button",
+          "type" : "latest"
+        }
+      },
+      "states" : {
+        "garage-statistics" : {
+          "name" : "Garage Statistics",
+          "root" : false,
+          "layouts" : {
+            "main" : {
+              "widgets" : {
+                "1d253184-00fb-410d-84f0-34c9fde1cf38" : {
+                  "sizeX" : 24,
+                  "sizeY" : 5,
+                  "col" : 0,
+                  "row" : 6
+                },
+                "f8a8734f-d189-41c2-a54d-4d4a5a5570f0" : {
+                  "sizeX" : 12,
+                  "sizeY" : 6,
+                  "col" : 0,
+                  "row" : 0
+                },
+                "e3a6e6fa-ac87-4cb9-a0e0-e59a16cd8d89" : {
+                  "sizeX" : 12,
+                  "sizeY" : 6,
+                  "col" : 12,
+                  "row" : 0
+                }
+              },
+              "gridSettings" : {
+                "layoutType" : "default",
+                "backgroundColor" : "#EEEEEE",
+                "columns" : "24",
+                "margin" : 10,
+                "outerMargin" : true,
+                "backgroundSizeMode" : "100%",
+                "marginBetweenWidgets" : "10",
+                "applyMarginToSides" : "true",
+                "autoFillHeight" : "true",
+                "mobileAutoFillHeight" : "false",
+                "mobileRowHeight" : "70"
+              }
+            }
+          }
+        },
+        "booking-details" : {
+          "name" : "Booking Details",
+          "root" : false,
+          "layouts" : {
+            "main" : {
+              "widgets" : {
+                "98493830-1d15-4033-b6ed-e4e8a6a1db3c" : {
+                  "sizeX" : 11,
+                  "sizeY" : 1,
+                  "col" : 0,
+                  "row" : 0
+                },
+                "f1bc7a19-7ffc-480a-9922-ddf6695315c7" : {
+                  "sizeX" : 4,
+                  "sizeY" : 1,
+                  "col" : 15,
+                  "row" : 0
+                },
+                "4ae88367-196f-4b74-8c8a-b554c5c35d5d" : {
+                  "sizeX" : 1,
+                  "sizeY" : 1,
+                  "col" : 23,
+                  "row" : 0
+                },
+                "5ed5cd1c-06e2-4631-9eb7-17aabdf9bd9a" : {
+                  "sizeX" : 24,
+                  "sizeY" : 14,
+                  "col" : 0,
+                  "row" : 1
+                },
+                "4de7661a-a547-4925-af14-e68b901609e0" : {
+                  "sizeX" : 4,
+                  "sizeY" : 1,
+                  "col" : 19,
+                  "row" : 0
+                },
+                "1d50fadb-ab88-43ef-bb40-79c808bcdaa7" : {
+                  "sizeX" : 4,
+                  "sizeY" : 1,
+                  "col" : 11,
+                  "row" : 0
+                }
+              },
+              "gridSettings" : {
+                "layoutType" : "default",
+                "backgroundColor" : "#EEEEEE",
+                "columns" : "24",
+                "margin" : 10,
+                "outerMargin" : true,
+                "backgroundSizeMode" : "100%",
+                "marginBetweenWidgets" : "10",
+                "applyMarginToSides" : "true",
+                "autoFillHeight" : "false",
+                "mobileAutoFillHeight" : "false",
+                "mobileRowHeight" : "70"
+              }
+            }
+          }
+        },
+        "booking-statistics" : {
+          "name" : "Booking Statistics",
+          "root" : false,
+          "layouts" : {
+            "main" : {
+              "widgets" : {
+                "1d2c8901-0b20-4078-a7ee-7c6236282698" : {
+                  "sizeX" : 24,
+                  "sizeY" : 11,
+                  "col" : 0,
+                  "row" : 0
+                }
+              },
+              "gridSettings" : {
+                "layoutType" : "default",
+                "backgroundColor" : "#EEEEEE",
+                "columns" : "24",
+                "margin" : 10,
+                "outerMargin" : true,
+                "backgroundSizeMode" : "100%",
+                "marginBetweenWidgets" : "10",
+                "applyMarginToSides" : "true",
+                "autoFillHeight" : "true",
+                "mobileAutoFillHeight" : "false",
+                "mobileRowHeight" : "70"
+              }
+            }
+          }
+        },
+        "root" : {
+          "name" : "Garage Management",
+          "root" : true,
+          "layouts" : {
+            "main" : {
+              "widgets" : {
+                "7404d484-101a-498a-a688-8373f3aafadf" : {
+                  "sizeX" : 24,
+                  "sizeY" : 14,
+                  "col" : 0,
+                  "row" : 1
+                },
+                "82cc7189-229e-4235-a5ad-1ae0f876d677" : {
+                  "sizeX" : 4,
+                  "sizeY" : 1,
+                  "col" : 20,
+                  "row" : 0
+                },
+                "7a491321-145d-428a-9b4b-a58dd71ba4d9" : {
+                  "sizeX" : 4,
+                  "sizeY" : 1,
+                  "col" : 16,
+                  "row" : 0
+                },
+                "178a1b9a-c20a-40cf-9ddd-e167542a4d7e" : {
+                  "sizeX" : 16,
+                  "sizeY" : 1,
+                  "col" : 0,
+                  "row" : 0
+                }
+              },
+              "gridSettings" : {
+                "layoutType" : "default",
+                "backgroundColor" : "#EEEEEE",
+                "columns" : "24",
+                "margin" : 10,
+                "outerMargin" : true,
+                "backgroundSizeMode" : "100%",
+                "marginBetweenWidgets" : "10",
+                "applyMarginToSides" : "true",
+                "autoFillHeight" : "false",
+                "mobileAutoFillHeight" : "false",
+                "mobileRowHeight" : "70"
+              }
+            }
+          }
+        },
+        "garage-overview" : {
+          "name" : "Garage Overview",
+          "root" : false,
+          "layouts" : {
+            "main" : {
+              "widgets" : {
+                "10691f05-7c5d-4aee-b4de-4e2a42e3855c" : {
+                  "sizeX" : 12,
+                  "sizeY" : 6,
+                  "col" : 12,
+                  "row" : 0
+                },
+                "7b923852-f1d3-4906-b1d7-0a4f09fe6ebd" : {
+                  "sizeX" : 12,
+                  "sizeY" : 5,
+                  "col" : 12,
+                  "row" : 6
+                },
+                "f0fc858c-c2b4-4779-9e32-c4537cad51f2" : {
+                  "sizeX" : 12,
+                  "sizeY" : 4,
+                  "col" : 0,
+                  "row" : 3
+                },
+                "25bf04d6-8c40-4bae-94ac-7c5217e807c6" : {
+                  "sizeX" : 12,
+                  "sizeY" : 4,
+                  "col" : 0,
+                  "row" : 7
+                },
+                "5ff43c10-0f3d-45a9-bbe6-96b4b77359d5" : {
+                  "sizeX" : 12,
+                  "sizeY" : 1,
+                  "col" : 0,
+                  "row" : 0
+                },
+                "48a4320a-5017-4150-b7c7-b51859d01be8" : {
+                  "sizeX" : 12,
+                  "sizeY" : 2,
+                  "col" : 0,
+                  "row" : 1
+                }
+              },
+              "gridSettings" : {
+                "layoutType" : "default",
+                "backgroundColor" : "#EEEEEE",
+                "columns" : "24",
+                "margin" : 10,
+                "outerMargin" : true,
+                "backgroundSizeMode" : "100%",
+                "marginBetweenWidgets" : "10",
+                "applyMarginToSides" : "true",
+                "autoFillHeight" : "true",
+                "mobileAutoFillHeight" : "false",
+                "mobileRowHeight" : "70"
+              }
+            }
+          }
+        },
+        "booking-overview" : {
+          "name" : "Booking Overview",
+          "root" : false,
+          "layouts" : {
+            "main" : {
+              "widgets" : {
+                "3e409132-5f09-48cc-b6be-f66b67eccc53" : {
+                  "sizeX" : 12,
+                  "sizeY" : 4,
+                  "col" : 12,
+                  "row" : 0
+                },
+                "73e4851a-634e-45f8-b33e-e3df3aac3a7b" : {
+                  "sizeX" : 12,
+                  "sizeY" : 2,
+                  "col" : 0,
+                  "row" : 0
+                },
+                "9c92b59f-bca5-4ef6-858f-156cfe463061" : {
+                  "sizeX" : 12,
+                  "sizeY" : 2,
+                  "col" : 0,
+                  "row" : 2
+                }
+              },
+              "gridSettings" : {
+                "layoutType" : "default",
+                "backgroundColor" : "#EEEEEE",
+                "columns" : "24",
+                "margin" : 10,
+                "outerMargin" : true,
+                "backgroundSizeMode" : "100%",
+                "marginBetweenWidgets" : "10",
+                "applyMarginToSides" : "true",
+                "autoFillHeight" : "true",
+                "mobileAutoFillHeight" : "false",
+                "mobileRowHeight" : "70"
+              }
+            }
+          }
+        }
+      },
+      "entityAliases" : {
+        "a2005a6e-3608-424d-a331-1da0caa47329" : {
+          "id" : "a2005a6e-3608-424d-a331-1da0caa47329",
+          "alias" : "Selected Booking",
+          "filter" : {
+            "resolveMultiple" : false,
+            "stateEntityParamName" : "selectedBookingSystem",
+            "defaultStateEntity" : null,
+            "type" : "stateEntity"
+          }
+        },
+        "b9d64206-17e7-4d2e-84ac-960711178ee1" : {
+          "id" : "b9d64206-17e7-4d2e-84ac-960711178ee1",
+          "alias" : "Parking Sensors",
+          "filter" : {
+            "resolveMultiple" : true,
+            "rootStateEntity" : true,
+            "stateEntityParamName" : "singleAsset",
+            "defaultStateEntity" : {
+              "entityType" : "ASSET",
+              "id" : "bdd92940-5aa7-11f1-8462-81b05148cbdb"
+            },
+            "rootEntity" : null,
+            "direction" : "FROM",
+            "maxLevel" : 1,
+            "fetchLastLevelOnly" : false,
+            "relationType" : "GarageToParkingSensor",
+            "deviceTypes" : [ "ParkingSensor" ],
+            "type" : "deviceSearchQuery"
+          }
+        },
+        "418a0484-383d-49fe-99c9-ceea4361567f" : {
+          "id" : "418a0484-383d-49fe-99c9-ceea4361567f",
+          "alias" : "Selected Garage",
+          "filter" : {
+            "resolveMultiple" : false,
+            "singleEntity" : {
+              "entityType" : "ASSET",
+              "id" : "bdd92940-5aa7-11f1-8462-81b05148cbdb"
+            },
+            "type" : "singleEntity"
+          }
+        },
+        "3d5b897c-1356-47c8-9dec-b23a98ad8143" : {
+          "id" : "3d5b897c-1356-47c8-9dec-b23a98ad8143",
+          "alias" : "Booking Records",
+          "filter" : {
+            "resolveMultiple" : true,
+            "rootStateEntity" : true,
+            "stateEntityParamName" : "singleAsset",
+            "defaultStateEntity" : {
+              "entityType" : "ASSET",
+              "id" : "bdd92940-5aa7-11f1-8462-81b05148cbdb"
+            },
+            "rootEntity" : null,
+            "direction" : "FROM",
+            "maxLevel" : 1,
+            "fetchLastLevelOnly" : false,
+            "relationType" : "GarageToBookingSystem",
+            "deviceTypes" : [ "BookingSystem" ],
+            "type" : "deviceSearchQuery"
+          }
+        }
+      },
+      "additionalInfo" : {
+        "description" : "Employee dashboard for checking real-time garage availability and managing personal parking reservations.",
+        "aiGenerated" : true
+      }
+    },
+    "resources" : null,
+    "externalId" : null
+  },
+  "relations" : [ ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "entityType" : "ENTITY_GROUP",
+  "entity" : {
+    "additionalInfo" : {
+      "description" : "Customer-level administrator responsible for managing parking spaces, pricing rules, and maintenance schedules.",
+      "aiGenerated" : true
+    },
+    "configuration" : {
+      "columns" : [ {
+        "type" : "ENTITY_FIELD",
+        "key" : "created_time",
+        "sortOrder" : "DESC"
+      }, {
+        "type" : "ENTITY_FIELD",
+        "key" : "first_name",
+        "sortOrder" : "NONE"
+      }, {
+        "type" : "ENTITY_FIELD",
+        "key" : "last_name",
+        "sortOrder" : "NONE"
+      }, {
+        "type" : "ENTITY_FIELD",
+        "key" : "email",
+        "sortOrder" : "NONE"
+      } ],
+      "settings" : { },
+      "actions" : { }
+    },
+    "edgeGroupAll" : false,
+    "externalId" : null,
+    "groupAll" : false,
+    "id" : {
+      "entityType" : "ENTITY_GROUP",
+      "id" : "bdb5c2c0-5aa7-11f1-8462-81b05148cbdb"
+    },
+    "name" : "Facility Manager",
+    "ownerId" : {
+      "entityType" : "CUSTOMER",
+      "id" : "bd9c4750-5aa7-11f1-8462-81b05148cbdb"
+    },
+    "type" : "USER"
+  },
+  "relations" : [ ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  },
+  "groupEntities" : true,
+  "permissions" : [ {
+    "entityGroupId" : null,
+    "entityGroupType" : null,
+    "roleId" : {
+      "entityType" : "ROLE",
+      "id" : "bdc88770-5aa7-11f1-8462-81b05148cbdb"
+    },
+    "tenantId" : {
+      "entityType" : "TENANT",
+      "id" : "b9e12dd0-52d5-11f1-bdfb-2fcbd7265065"
+    },
+    "userGroupId" : {
+      "entityType" : "ENTITY_GROUP",
+      "id" : "bdb5c2c0-5aa7-11f1-8462-81b05148cbdb"
+    },
+    "createdTime" : 1779981191549,
+    "id" : {
+      "entityType" : "GROUP_PERMISSION",
+      "id" : "bdcbe2d0-5aa7-11f1-8462-81b05148cbdb"
+    },
+    "name" : "GENERIC_[bdb5c2c0-5aa7-11f1-8462-81b05148cbdb]_[bdc88770-5aa7-11f1-8462-81b05148cbdb]",
+    "public" : false
+  }, {
+    "entityGroupId" : {
+      "entityType" : "ENTITY_GROUP",
+      "id" : "bebf6a90-5aa7-11f1-8462-81b05148cbdb"
+    },
+    "entityGroupType" : "DASHBOARD",
+    "roleId" : {
+      "entityType" : "ROLE",
+      "id" : "beb5a690-5aa7-11f1-8462-81b05148cbdb"
+    },
+    "tenantId" : {
+      "entityType" : "TENANT",
+      "id" : "b9e12dd0-52d5-11f1-bdfb-2fcbd7265065"
+    },
+    "userGroupId" : {
+      "entityType" : "ENTITY_GROUP",
+      "id" : "bdb5c2c0-5aa7-11f1-8462-81b05148cbdb"
+    },
+    "createdTime" : 1779981193190,
+    "id" : {
+      "entityType" : "GROUP_PERMISSION",
+      "id" : "bec64860-5aa7-11f1-8462-81b05148cbdb"
+    },
+    "name" : "GROUP_[bdb5c2c0-5aa7-11f1-8462-81b05148cbdb]_[beb5a690-5aa7-11f1-8462-81b05148cbdb]_[bebf6a90-5aa7-11f1-8462-81b05148cbdb]_[DASHBOARD]",
+    "public" : false
+  } ]
+}

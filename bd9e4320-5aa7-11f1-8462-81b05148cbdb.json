@@ -1,0 +1,125 @@
+{
+  "entityType" : "ASSET",
+  "entity" : {
+    "additionalInfo" : {
+      "aiGenerated" : true
+    },
+    "assetProfileId" : {
+      "entityType" : "ASSET_PROFILE",
+      "id" : "bdd57fc0-5aa7-11f1-8462-81b05148cbdb"
+    },
+    "customerId" : {
+      "entityType" : "CUSTOMER",
+      "id" : "bd9c4750-5aa7-11f1-8462-81b05148cbdb"
+    },
+    "externalId" : null,
+    "id" : {
+      "entityType" : "ASSET",
+      "id" : "bdd92940-5aa7-11f1-8462-81b05148cbdb"
+    },
+    "label" : "Central Garage",
+    "name" : "BMW Parkhaus Nordwest",
+    "ownerId" : {
+      "entityType" : "CUSTOMER",
+      "id" : "bd9c4750-5aa7-11f1-8462-81b05148cbdb"
+    },
+    "type" : "Garage"
+  },
+  "relations" : [ {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "CUSTOMER",
+      "id" : "bd9c4750-5aa7-11f1-8462-81b05148cbdb"
+    },
+    "to" : {
+      "entityType" : "ASSET",
+      "id" : "bdd92940-5aa7-11f1-8462-81b05148cbdb"
+    },
+    "type" : "Operates",
+    "typeGroup" : "COMMON",
+    "version" : 17595698
+  }, {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "ASSET",
+      "id" : "bdd92940-5aa7-11f1-8462-81b05148cbdb"
+    },
+    "to" : {
+      "entityType" : "DEVICE",
+      "id" : "be01e6f0-5aa7-11f1-8462-81b05148cbdb"
+    },
+    "type" : "GarageToParkingSensor",
+    "typeGroup" : "COMMON",
+    "version" : 17595694
+  }, {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "ASSET",
+      "id" : "bdd92940-5aa7-11f1-8462-81b05148cbdb"
+    },
+    "to" : {
+      "entityType" : "DEVICE",
+      "id" : "be239fc0-5aa7-11f1-8462-81b05148cbdb"
+    },
+    "type" : "GarageToParkingSensor",
+    "typeGroup" : "COMMON",
+    "version" : 17595696
+  }, {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "ASSET",
+      "id" : "bdd92940-5aa7-11f1-8462-81b05148cbdb"
+    },
+    "to" : {
+      "entityType" : "DEVICE",
+      "id" : "be32baf0-5aa7-11f1-8462-81b05148cbdb"
+    },
+    "type" : "GarageToParkingSensor",
+    "typeGroup" : "COMMON",
+    "version" : 17595697
+  } ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "address",
+      "lastUpdateTs" : 1780301759390,
+      "longValue" : null,
+      "strValue" : "Moosacher Straße 61, 80809 München "
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "floorPlan",
+      "lastUpdateTs" : 1779981191721,
+      "longValue" : null,
+      "strValue" : "tb-image;/api/images/system/smart-parking-plan-1.png"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : 48.18537431700344,
+      "jsonValue" : null,
+      "key" : "latitude",
+      "lastUpdateTs" : 1780313702886,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : 11.554952114105227,
+      "jsonValue" : null,
+      "key" : "longitude",
+      "lastUpdateTs" : 1780313702886,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "totalSpaces",
+      "lastUpdateTs" : 1780301759390,
+      "longValue" : 100,
+      "strValue" : null
+    } ]
+  },
+  "calculatedFields" : [ ]
+}

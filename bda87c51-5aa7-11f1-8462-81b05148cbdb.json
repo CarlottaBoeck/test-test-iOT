@@ -1,0 +1,205 @@
+{
+    "entityType": "DEVICE_PROFILE",
+    "entity": {
+        "default": false,
+        "defaultDashboardId": null,
+        "defaultEdgeRuleChainId": null,
+        "defaultQueueName": null,
+        "defaultRuleChainId": null,
+        "description": "Profil für E-Ladesäulen mit Predictive Maintenance",
+        "externalId": null,
+        "firmwareId": null,
+        "id": {
+            "entityType": "DEVICE_PROFILE",
+            "id": "cc001000-0001-11f1-0000-000000000001"
+        },
+        "image": null,
+        "name": "ChargingStation",
+        "profileData": {
+            "alarms": [
+                {
+                    "id": "alarm-charging-cycles",
+                    "alarmType": "Hoher Verschleiß - Zyklen",
+                    "createRules": {
+                        "CRITICAL": {
+                            "condition": {
+                                "condition": [
+                                    {
+                                        "key": {
+                                            "type": "TIME_SERIES",
+                                            "name": "zyklen_gesamt"
+                                        },
+                                        "valueType": "NUMERIC",
+                                        "value": 10000,
+                                        "predicate": {
+                                            "type": "NUMERIC",
+                                            "operation": "GREATER_OR_EQUAL",
+                                            "value": {
+                                                "userValue": 10000,
+                                                "defaultValue": 10000,
+                                                "dynamicValue": null
+                                            }
+                                        }
+                                    }
+                                ],
+                                "spec": {
+                                    "type": "SIMPLE"
+                                }
+                            },
+                            "schedule": null,
+                            "alarmDetails": "Schrankenzyklen >= 10.000: Wartung erforderlich",
+                            "dashboardId": null
+                        }
+                    },
+                    "clearRule": {
+                        "condition": {
+                            "condition": [
+                                {
+                                    "key": {
+                                        "type": "TIME_SERIES",
+                                        "name": "zyklen_gesamt"
+                                    },
+                                    "valueType": "NUMERIC",
+                                    "value": 10000,
+                                    "predicate": {
+                                        "type": "NUMERIC",
+                                        "operation": "LESS",
+                                        "value": {
+                                            "userValue": 10000,
+                                            "defaultValue": 10000,
+                                            "dynamicValue": null
+                                        }
+                                    }
+                                }
+                            ],
+                            "spec": {
+                                "type": "SIMPLE"
+                            }
+                        },
+                        "schedule": null,
+                        "alarmDetails": null,
+                        "dashboardId": null
+                    },
+                    "propagate": true,
+                    "propagateToOwner": true,
+                    "propagateToTenant": true,
+                    "propagateRelationTypes": null
+                },
+                {
+                    "id": "alarm-motor-temp",
+                    "alarmType": "Überhitzung Motor",
+                    "createRules": {
+                        "WARNING": {
+                            "condition": {
+                                "condition": [
+                                    {
+                                        "key": {
+                                            "type": "TIME_SERIES",
+                                            "name": "motor_temperatur_c"
+                                        },
+                                        "valueType": "NUMERIC",
+                                        "value": 70,
+                                        "predicate": {
+                                            "type": "NUMERIC",
+                                            "operation": "GREATER_OR_EQUAL",
+                                            "value": {
+                                                "userValue": 70,
+                                                "defaultValue": 70,
+                                                "dynamicValue": null
+                                            }
+                                        }
+                                    }
+                                ],
+                                "spec": {
+                                    "type": "SIMPLE"
+                                }
+                            },
+                            "schedule": null,
+                            "alarmDetails": "Motortemperatur >= 70°C: Prüfung empfohlen",
+                            "dashboardId": null
+                        },
+                        "CRITICAL": {
+                            "condition": {
+                                "condition": [
+                                    {
+                                        "key": {
+                                            "type": "TIME_SERIES",
+                                            "name": "motor_temperatur_c"
+                                        },
+                                        "valueType": "NUMERIC",
+                                        "value": 85,
+                                        "predicate": {
+                                            "type": "NUMERIC",
+                                            "operation": "GREATER_OR_EQUAL",
+                                            "value": {
+                                                "userValue": 85,
+                                                "defaultValue": 85,
+                                                "dynamicValue": null
+                                            }
+                                        }
+                                    }
+                                ],
+                                "spec": {
+                                    "type": "SIMPLE"
+                                }
+                            },
+                            "schedule": null,
+                            "alarmDetails": "Motortemperatur >= 85°C: KRITISCH",
+                            "dashboardId": null
+                        }
+                    },
+                    "clearRule": {
+                        "condition": {
+                            "condition": [
+                                {
+                                    "key": {
+                                        "type": "TIME_SERIES",
+                                        "name": "motor_temperatur_c"
+                                    },
+                                    "valueType": "NUMERIC",
+                                    "value": 65,
+                                    "predicate": {
+                                        "type": "NUMERIC",
+                                        "operation": "LESS",
+                                        "value": {
+                                            "userValue": 65,
+                                            "defaultValue": 65,
+                                            "dynamicValue": null
+                                        }
+                                    }
+                                }
+                            ],
+                            "spec": {
+                                "type": "SIMPLE"
+                            }
+                        },
+                        "schedule": null,
+                        "alarmDetails": null,
+                        "dashboardId": null
+                    },
+                    "propagate": true,
+                    "propagateToOwner": true,
+                    "propagateToTenant": true,
+                    "propagateRelationTypes": null
+                }
+            ],
+            "configuration": {
+                "type": "DEFAULT"
+            },
+            "provisionConfiguration": {
+                "type": "DISABLED",
+                "provisionDeviceSecret": null
+            },
+            "transportConfiguration": {
+                "type": "DEFAULT"
+            }
+        },
+        "softwareId": null,
+        "transportType": "DEFAULT",
+        "type": "DEFAULT"
+    },
+    "relations": [],
+    "attributes": {
+        "SERVER_SCOPE": []
+    }
+}

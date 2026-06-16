@@ -1,0 +1,611 @@
+{
+    "entityType": "DEVICE_PROFILE",
+    "entity": {
+        "default": false,
+        "defaultDashboardId": null,
+        "defaultEdgeRuleChainId": null,
+        "defaultQueueName": null,
+        "defaultRuleChainId": null,
+        "description": "Automated garage entry barrier providing usage metrics and motor diagnostics for predictive maintenance.",
+        "externalId": null,
+        "firmwareId": null,
+        "id": {
+            "entityType": "DEVICE_PROFILE",
+            "id": "bdf87110-5aa7-11f1-8462-81b05148cbdb"
+        },
+        "image": null,
+        "name": "EntryBarrier",
+        "profileData": {
+            "alarms": [
+                {
+                    "id": "alarm-barrier-cycles",
+                    "alarmType": "Schranke - Hoher Verschleiß",
+                    "createRules": {
+                        "WARNING": {
+                            "condition": {
+                                "condition": [
+                                    {
+                                        "key": {
+                                            "type": "TIME_SERIES",
+                                            "name": "zyklen_gesamt"
+                                        },
+                                        "valueType": "NUMERIC",
+                                        "value": 7000,
+                                        "predicate": {
+                                            "type": "NUMERIC",
+                                            "operation": "GREATER_OR_EQUAL",
+                                            "value": {
+                                                "userValue": 7000,
+                                                "defaultValue": 7000,
+                                                "dynamicValue": null
+                                            }
+                                        }
+                                    }
+                                ],
+                                "spec": {
+                                    "type": "SIMPLE"
+                                }
+                            },
+                            "schedule": null,
+                            "alarmDetails": "Schrankenzyklen >= 7.000: Wartung in Kürze",
+                            "dashboardId": null
+                        },
+                        "CRITICAL": {
+                            "condition": {
+                                "condition": [
+                                    {
+                                        "key": {
+                                            "type": "TIME_SERIES",
+                                            "name": "zyklen_gesamt"
+                                        },
+                                        "valueType": "NUMERIC",
+                                        "value": 10000,
+                                        "predicate": {
+                                            "type": "NUMERIC",
+                                            "operation": "GREATER_OR_EQUAL",
+                                            "value": {
+                                                "userValue": 10000,
+                                                "defaultValue": 10000,
+                                                "dynamicValue": null
+                                            }
+                                        }
+                                    }
+                                ],
+                                "spec": {
+                                    "type": "SIMPLE"
+                                }
+                            },
+                            "schedule": null,
+                            "alarmDetails": "Schrankenzyklen >= 10.000: Sofortige Wartung erforderlich",
+                            "dashboardId": null
+                        }
+                    },
+                    "clearRule": {
+                        "condition": {
+                            "condition": [
+                                {
+                                    "key": {
+                                        "type": "TIME_SERIES",
+                                        "name": "zyklen_gesamt"
+                                    },
+                                    "valueType": "NUMERIC",
+                                    "value": 7000,
+                                    "predicate": {
+                                        "type": "NUMERIC",
+                                        "operation": "LESS",
+                                        "value": {
+                                            "userValue": 7000,
+                                            "defaultValue": 7000,
+                                            "dynamicValue": null
+                                        }
+                                    }
+                                }
+                            ],
+                            "spec": {
+                                "type": "SIMPLE"
+                            }
+                        },
+                        "schedule": null,
+                        "alarmDetails": null,
+                        "dashboardId": null
+                    },
+                    "propagate": true,
+                    "propagateToOwner": true,
+                    "propagateToTenant": true,
+                    "propagateRelationTypes": null
+                },
+                {
+                    "id": "alarm-barrier-temp",
+                    "alarmType": "Schranke - Motortemperatur",
+                    "createRules": {
+                        "WARNING": {
+                            "condition": {
+                                "condition": [
+                                    {
+                                        "key": {
+                                            "type": "TIME_SERIES",
+                                            "name": "motor_temperatur_c"
+                                        },
+                                        "valueType": "NUMERIC",
+                                        "value": 70,
+                                        "predicate": {
+                                            "type": "NUMERIC",
+                                            "operation": "GREATER_OR_EQUAL",
+                                            "value": {
+                                                "userValue": 70,
+                                                "defaultValue": 70,
+                                                "dynamicValue": null
+                                            }
+                                        }
+                                    }
+                                ],
+                                "spec": {
+                                    "type": "SIMPLE"
+                                }
+                            },
+                            "schedule": null,
+                            "alarmDetails": "Motor >= 70°C",
+                            "dashboardId": null
+                        },
+                        "CRITICAL": {
+                            "condition": {
+                                "condition": [
+                                    {
+                                        "key": {
+                                            "type": "TIME_SERIES",
+                                            "name": "motor_temperatur_c"
+                                        },
+                                        "valueType": "NUMERIC",
+                                        "value": 85,
+                                        "predicate": {
+                                            "type": "NUMERIC",
+                                            "operation": "GREATER_OR_EQUAL",
+                                            "value": {
+                                                "userValue": 85,
+                                                "defaultValue": 85,
+                                                "dynamicValue": null
+                                            }
+                                        }
+                                    }
+                                ],
+                                "spec": {
+                                    "type": "SIMPLE"
+                                }
+                            },
+                            "schedule": null,
+                            "alarmDetails": "Motor >= 85°C: KRITISCH",
+                            "dashboardId": null
+                        }
+                    },
+                    "clearRule": {
+                        "condition": {
+                            "condition": [
+                                {
+                                    "key": {
+                                        "type": "TIME_SERIES",
+                                        "name": "motor_temperatur_c"
+                                    },
+                                    "valueType": "NUMERIC",
+                                    "value": 65,
+                                    "predicate": {
+                                        "type": "NUMERIC",
+                                        "operation": "LESS",
+                                        "value": {
+                                            "userValue": 65,
+                                            "defaultValue": 65,
+                                            "dynamicValue": null
+                                        }
+                                    }
+                                }
+                            ],
+                            "spec": {
+                                "type": "SIMPLE"
+                            }
+                        },
+                        "schedule": null,
+                        "alarmDetails": null,
+                        "dashboardId": null
+                    },
+                    "propagate": true,
+                    "propagateToOwner": true,
+                    "propagateToTenant": true,
+                    "propagateRelationTypes": null
+                }
+            ],
+            "configuration": {
+                "type": "DEFAULT"
+            },
+            "provisionConfiguration": null,
+            "transportConfiguration": {
+                "type": "DEFAULT"
+            }
+        },
+        "provisionDeviceKey": null,
+        "provisionType": "DISABLED",
+        "softwareId": null,
+        "transportType": "DEFAULT",
+        "type": "DEFAULT"
+    },
+    "relations": [],
+    "attributes": {
+        "SERVER_SCOPE": []
+    },
+    "calculatedFields": [
+        {
+            "additionalInfo": {
+                "aiGenerated": true
+            },
+            "configuration": {
+                "type": "ALARM",
+                "arguments": {
+                    "motorTemperature": {
+                        "refEntityKey": {
+                            "key": "motorTemperature",
+                            "type": "TS_LATEST"
+                        }
+                    }
+                },
+                "clearRule": {
+                    "alarmDetails": "Barrier motor temperature returned to normal: ${motorTemperature}°C",
+                    "condition": {
+                        "type": "SIMPLE",
+                        "expression": {
+                            "type": "SIMPLE",
+                            "filters": [
+                                {
+                                    "argument": "motorTemperature",
+                                    "operation": "AND",
+                                    "predicates": [
+                                        {
+                                            "type": "NUMERIC",
+                                            "operation": "LESS_OR_EQUAL",
+                                            "value": {
+                                                "dynamicValueArgument": null,
+                                                "staticValue": 75.0
+                                            }
+                                        }
+                                    ],
+                                    "valueType": "NUMERIC"
+                                }
+                            ],
+                            "operation": "AND"
+                        },
+                        "schedule": null
+                    },
+                    "dashboardId": null
+                },
+                "createRules": {
+                    "CRITICAL": {
+                        "alarmDetails": "Barrier motor overheat detected: ${motorTemperature}°C",
+                        "condition": {
+                            "type": "SIMPLE",
+                            "expression": {
+                                "type": "SIMPLE",
+                                "filters": [
+                                    {
+                                        "argument": "motorTemperature",
+                                        "operation": "AND",
+                                        "predicates": [
+                                            {
+                                                "type": "NUMERIC",
+                                                "operation": "GREATER",
+                                                "value": {
+                                                    "dynamicValueArgument": null,
+                                                    "staticValue": 75.0
+                                                }
+                                            }
+                                        ],
+                                        "valueType": "NUMERIC"
+                                    }
+                                ],
+                                "operation": "AND"
+                            },
+                            "schedule": null
+                        },
+                        "dashboardId": null
+                    }
+                },
+                "output": null,
+                "propagate": true,
+                "propagateRelationTypes": null,
+                "propagateToOwner": true,
+                "propagateToOwnerHierarchy": true,
+                "propagateToTenant": true
+            },
+            "configurationVersion": 0,
+            "debugSettings": {
+                "allEnabled": false,
+                "allEnabledUntil": 1779982093363,
+                "failuresEnabled": false
+            },
+            "name": "BarrierCriticalOverheat",
+            "tenantId": {
+                "entityType": "TENANT",
+                "id": "b9e12dd0-52d5-11f1-bdfb-2fcbd7265065"
+            },
+            "type": "ALARM"
+        },
+        {
+            "additionalInfo": {
+                "aiGenerated": true
+            },
+            "configuration": {
+                "type": "ALARM",
+                "arguments": {
+                    "active": {
+                        "refEntityKey": {
+                            "key": "active",
+                            "scope": "SERVER_SCOPE",
+                            "type": "ATTRIBUTE"
+                        }
+                    }
+                },
+                "clearRule": {
+                    "alarmDetails": "Device is back online",
+                    "condition": {
+                        "type": "SIMPLE",
+                        "expression": {
+                            "type": "SIMPLE",
+                            "filters": [
+                                {
+                                    "argument": "active",
+                                    "operation": "AND",
+                                    "predicates": [
+                                        {
+                                            "type": "BOOLEAN",
+                                            "operation": "EQUAL",
+                                            "value": {
+                                                "dynamicValueArgument": null,
+                                                "staticValue": true
+                                            }
+                                        }
+                                    ],
+                                    "valueType": "BOOLEAN"
+                                }
+                            ],
+                            "operation": "AND"
+                        },
+                        "schedule": null
+                    },
+                    "dashboardId": null
+                },
+                "createRules": {
+                    "CRITICAL": {
+                        "alarmDetails": "Connectivity lost: device has been offline for more than 15 minutes",
+                        "condition": {
+                            "type": "DURATION",
+                            "expression": {
+                                "type": "SIMPLE",
+                                "filters": [
+                                    {
+                                        "argument": "active",
+                                        "operation": "AND",
+                                        "predicates": [
+                                            {
+                                                "type": "BOOLEAN",
+                                                "operation": "EQUAL",
+                                                "value": {
+                                                    "dynamicValueArgument": null,
+                                                    "staticValue": false
+                                                }
+                                            }
+                                        ],
+                                        "valueType": "BOOLEAN"
+                                    }
+                                ],
+                                "operation": "AND"
+                            },
+                            "schedule": null,
+                            "unit": "MINUTES",
+                            "value": {
+                                "dynamicValueArgument": null,
+                                "staticValue": 15
+                            }
+                        },
+                        "dashboardId": null
+                    }
+                },
+                "output": null,
+                "propagate": true,
+                "propagateRelationTypes": null,
+                "propagateToOwner": true,
+                "propagateToOwnerHierarchy": true,
+                "propagateToTenant": true
+            },
+            "configurationVersion": 0,
+            "debugSettings": {
+                "allEnabled": false,
+                "allEnabledUntil": 1779982093411,
+                "failuresEnabled": false
+            },
+            "name": "DeviceConnectivityLost",
+            "tenantId": {
+                "entityType": "TENANT",
+                "id": "b9e12dd0-52d5-11f1-bdfb-2fcbd7265065"
+            },
+            "type": "ALARM"
+        },
+        {
+            "additionalInfo": {
+                "aiGenerated": true
+            },
+            "configuration": {
+                "type": "SCRIPT",
+                "arguments": {
+                    "cyclesTotal": {
+                        "refEntityKey": {
+                            "key": "cyclesTotal",
+                            "type": "TS_LATEST"
+                        }
+                    },
+                    "motorTemperature": {
+                        "refEntityKey": {
+                            "key": "motorTemperature",
+                            "type": "TS_LATEST"
+                        }
+                    }
+                },
+                "expression": "var status = \"normal\"; if (motorTemperature > 75) { status = \"critical\"; } else if (cyclesTotal >= 10000) { status = \"recommended\"; } return { \"maintenanceStatus\": status };",
+                "output": {
+                    "type": "TIME_SERIES",
+                    "strategy": {
+                        "type": "IMMEDIATE",
+                        "processCfs": true,
+                        "saveLatest": true,
+                        "saveTimeSeries": true,
+                        "sendWsUpdate": true,
+                        "ttl": 0
+                    }
+                }
+            },
+            "configurationVersion": 0,
+            "debugSettings": {
+                "allEnabled": false,
+                "allEnabledUntil": 1779982093685,
+                "failuresEnabled": false
+            },
+            "name": "EntryBarrier maintenance status calculation",
+            "tenantId": {
+                "entityType": "TENANT",
+                "id": "b9e12dd0-52d5-11f1-bdfb-2fcbd7265065"
+            },
+            "type": "SCRIPT"
+        },
+        {
+            "additionalInfo": {
+                "aiGenerated": true
+            },
+            "configuration": {
+                "type": "SIMPLE",
+                "arguments": {
+                    "cyclesTotal": {
+                        "refEntityKey": {
+                            "key": "cyclesTotal",
+                            "type": "TS_LATEST"
+                        }
+                    }
+                },
+                "expression": "(cyclesTotal / 10000) * 100",
+                "output": {
+                    "type": "TIME_SERIES",
+                    "name": "wearLevel",
+                    "strategy": {
+                        "type": "IMMEDIATE",
+                        "processCfs": true,
+                        "saveLatest": true,
+                        "saveTimeSeries": true,
+                        "sendWsUpdate": true,
+                        "ttl": 0
+                    }
+                },
+                "useLatestTs": true
+            },
+            "configurationVersion": 0,
+            "debugSettings": {
+                "allEnabled": false,
+                "allEnabledUntil": 1779982093657,
+                "failuresEnabled": false
+            },
+            "name": "EntryBarrier wear level calculation",
+            "tenantId": {
+                "entityType": "TENANT",
+                "id": "b9e12dd0-52d5-11f1-bdfb-2fcbd7265065"
+            },
+            "type": "SIMPLE"
+        },
+        {
+            "additionalInfo": {
+                "aiGenerated": true
+            },
+            "configuration": {
+                "type": "ALARM",
+                "arguments": {
+                    "cyclesTotal": {
+                        "refEntityKey": {
+                            "key": "cyclesTotal",
+                            "type": "TS_LATEST"
+                        }
+                    }
+                },
+                "clearRule": {
+                    "alarmDetails": "Maintenance cleared: cycles reset to ${cyclesTotal}",
+                    "condition": {
+                        "type": "SIMPLE",
+                        "expression": {
+                            "type": "SIMPLE",
+                            "filters": [
+                                {
+                                    "argument": "cyclesTotal",
+                                    "operation": "AND",
+                                    "predicates": [
+                                        {
+                                            "type": "NUMERIC",
+                                            "operation": "LESS",
+                                            "value": {
+                                                "dynamicValueArgument": null,
+                                                "staticValue": 10000.0
+                                            }
+                                        }
+                                    ],
+                                    "valueType": "NUMERIC"
+                                }
+                            ],
+                            "operation": "AND"
+                        },
+                        "schedule": null
+                    },
+                    "dashboardId": null
+                },
+                "createRules": {
+                    "CRITICAL": {
+                        "alarmDetails": "Maintenance required: total cycles ${cyclesTotal} reached or exceeded the maintenance threshold of 10000",
+                        "condition": {
+                            "type": "SIMPLE",
+                            "expression": {
+                                "type": "SIMPLE",
+                                "filters": [
+                                    {
+                                        "argument": "cyclesTotal",
+                                        "operation": "AND",
+                                        "predicates": [
+                                            {
+                                                "type": "NUMERIC",
+                                                "operation": "GREATER_OR_EQUAL",
+                                                "value": {
+                                                    "dynamicValueArgument": null,
+                                                    "staticValue": 10000.0
+                                                }
+                                            }
+                                        ],
+                                        "valueType": "NUMERIC"
+                                    }
+                                ],
+                                "operation": "AND"
+                            },
+                            "schedule": null
+                        },
+                        "dashboardId": null
+                    }
+                },
+                "output": null,
+                "propagate": true,
+                "propagateRelationTypes": null,
+                "propagateToOwner": true,
+                "propagateToOwnerHierarchy": true,
+                "propagateToTenant": true
+            },
+            "configurationVersion": 0,
+            "debugSettings": {
+                "allEnabled": false,
+                "allEnabledUntil": 1779982093378,
+                "failuresEnabled": false
+            },
+            "name": "ScheduledMaintenanceRequired",
+            "tenantId": {
+                "entityType": "TENANT",
+                "id": "b9e12dd0-52d5-11f1-bdfb-2fcbd7265065"
+            },
+            "type": "ALARM"
+        }
+    ]
+}

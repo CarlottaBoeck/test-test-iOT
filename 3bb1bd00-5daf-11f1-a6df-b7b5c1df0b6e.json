@@ -1,0 +1,345 @@
+{
+  "entityType" : "ASSET_PROFILE",
+  "entity" : {
+    "default" : false,
+    "defaultDashboardId" : null,
+    "defaultEdgeRuleChainId" : null,
+    "defaultQueueName" : null,
+    "defaultRuleChainId" : null,
+    "description" : "Logical entity aggregating data from sensors and barriers to provide facility-wide occupancy metrics and pricing.",
+    "externalId" : null,
+    "id" : {
+      "entityType" : "ASSET_PROFILE",
+      "id" : "bdd57fc0-5aa7-11f1-8462-81b05148cbdb"
+    },
+    "image" : null,
+    "name" : "Garage"
+  },
+  "relations" : [ ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  },
+  "calculatedFields" : [ {
+    "additionalInfo" : {
+      "aiGenerated" : true
+    },
+    "configuration" : {
+      "type" : "SCRIPT",
+      "arguments" : {
+        "occupancyRate" : {
+          "refEntityKey" : {
+            "key" : "occupancyRate",
+            "type" : "TS_LATEST"
+          }
+        }
+      },
+      "expression" : "var factor = 1.0;if (occupancyRate > 95) {factor = 2.0;} else if (occupancyRate >= 80) {factor = 1.5;} else if (occupancyRate >= 50) {factor = 1.2;}var d = new Date(ctx.latestTs);var day = d.getDay();var hour = d.getHours();var multiplier = 1.0;if (day >= 1 && day <= 5 && hour >= 6 && hour < 10) {multiplier = 1.3;}var price = 2.0 * factor * multiplier;return {\"currentPrice\": price};",
+      "output" : {
+        "type" : "TIME_SERIES",
+        "strategy" : {
+          "type" : "IMMEDIATE",
+          "processCfs" : true,
+          "saveLatest" : true,
+          "saveTimeSeries" : true,
+          "sendWsUpdate" : true,
+          "ttl" : 0
+        }
+      }
+    },
+    "configurationVersion" : 0,
+    "debugSettings" : {
+      "allEnabled" : false,
+      "allEnabledUntil" : 1779982100997,
+      "failuresEnabled" : false
+    },
+    "name" : "Garage current price calculation",
+    "tenantId" : {
+      "entityType" : "TENANT",
+      "id" : "b9e12dd0-52d5-11f1-bdfb-2fcbd7265065"
+    },
+    "type" : "SCRIPT"
+  }, {
+    "additionalInfo" : {
+      "aiGenerated" : true
+    },
+    "configuration" : {
+      "type" : "SIMPLE",
+      "arguments" : {
+        "occupiedSpaces" : {
+          "refEntityKey" : {
+            "key" : "occupiedSpaces",
+            "type" : "TS_LATEST"
+          }
+        },
+        "totalSpaces" : {
+          "refEntityKey" : {
+            "key" : "totalSpaces",
+            "scope" : "SERVER_SCOPE",
+            "type" : "ATTRIBUTE"
+          }
+        }
+      },
+      "expression" : "totalSpaces - occupiedSpaces",
+      "output" : {
+        "type" : "TIME_SERIES",
+        "name" : "freeSpaces",
+        "strategy" : {
+          "type" : "IMMEDIATE",
+          "processCfs" : true,
+          "saveLatest" : true,
+          "saveTimeSeries" : true,
+          "sendWsUpdate" : true,
+          "ttl" : 0
+        }
+      },
+      "useLatestTs" : true
+    },
+    "configurationVersion" : 0,
+    "debugSettings" : {
+      "allEnabled" : false,
+      "allEnabledUntil" : 1779982096870,
+      "failuresEnabled" : false
+    },
+    "name" : "Garage free spaces calculation",
+    "tenantId" : {
+      "entityType" : "TENANT",
+      "id" : "b9e12dd0-52d5-11f1-bdfb-2fcbd7265065"
+    },
+    "type" : "SIMPLE"
+  }, {
+    "additionalInfo" : {
+      "aiGenerated" : true
+    },
+    "configuration" : {
+      "type" : "SIMPLE",
+      "arguments" : {
+        "occupiedSpaces" : {
+          "refEntityKey" : {
+            "key" : "occupiedSpaces",
+            "type" : "TS_LATEST"
+          }
+        },
+        "totalSpaces" : {
+          "refEntityKey" : {
+            "key" : "totalSpaces",
+            "scope" : "SERVER_SCOPE",
+            "type" : "ATTRIBUTE"
+          }
+        }
+      },
+      "expression" : "(occupiedSpaces / totalSpaces) * 100",
+      "output" : {
+        "type" : "TIME_SERIES",
+        "name" : "occupancyRate",
+        "strategy" : {
+          "type" : "IMMEDIATE",
+          "processCfs" : true,
+          "saveLatest" : true,
+          "saveTimeSeries" : true,
+          "sendWsUpdate" : true,
+          "ttl" : 0
+        }
+      },
+      "useLatestTs" : true
+    },
+    "configurationVersion" : 0,
+    "debugSettings" : {
+      "allEnabled" : false,
+      "allEnabledUntil" : 1779982096891,
+      "failuresEnabled" : false
+    },
+    "name" : "Garage occupancy rate calculation",
+    "tenantId" : {
+      "entityType" : "TENANT",
+      "id" : "b9e12dd0-52d5-11f1-bdfb-2fcbd7265065"
+    },
+    "type" : "SIMPLE"
+  }, {
+    "additionalInfo" : {
+      "aiGenerated" : true
+    },
+    "configuration" : {
+      "type" : "RELATED_ENTITIES_AGGREGATION",
+      "arguments" : {
+        "occupied" : {
+          "defaultValue" : "false",
+          "refEntityKey" : {
+            "key" : "occupied",
+            "type" : "TS_LATEST"
+          }
+        }
+      },
+      "deduplicationIntervalInSec" : 10,
+      "metrics" : {
+        "occupiedSpaces" : {
+          "filter" : "return occupied == true;",
+          "function" : "COUNT",
+          "input" : {
+            "type" : "key",
+            "key" : "occupied"
+          }
+        }
+      },
+      "output" : {
+        "type" : "TIME_SERIES",
+        "strategy" : {
+          "type" : "IMMEDIATE",
+          "processCfs" : true,
+          "saveLatest" : true,
+          "saveTimeSeries" : true,
+          "sendWsUpdate" : true,
+          "ttl" : 0
+        }
+      },
+      "relation" : {
+        "direction" : "FROM",
+        "relationType" : "GarageToParkingSensor"
+      },
+      "scheduledUpdateEnabled" : true,
+      "scheduledUpdateInterval" : 10,
+      "useLatestTs" : true
+    },
+    "configurationVersion" : 0,
+    "debugSettings" : {
+      "allEnabled" : false,
+      "allEnabledUntil" : 1779982093629,
+      "failuresEnabled" : false
+    },
+    "name" : "Garage occupied spaces calculation",
+    "tenantId" : {
+      "entityType" : "TENANT",
+      "id" : "b9e12dd0-52d5-11f1-bdfb-2fcbd7265065"
+    },
+    "type" : "RELATED_ENTITIES_AGGREGATION"
+  }, {
+    "additionalInfo" : {
+      "aiGenerated" : true
+    },
+    "configuration" : {
+      "type" : "SCRIPT",
+      "arguments" : {
+        "historicalWeekdayPatterns" : {
+          "refEntityKey" : {
+            "key" : "historicalWeekdayPatterns",
+            "type" : "TS_LATEST"
+          }
+        },
+        "occupancyRate" : {
+          "refEntityKey" : {
+            "key" : "occupancyRate",
+            "type" : "TS_LATEST"
+          }
+        }
+      },
+      "expression" : "var weightCurrent = 0.4;\nvar weightHistorical = 0.6;\nvar predicted = (occupancyRate * weightCurrent) + (historicalWeekdayPatterns * weightHistorical);\nreturn { \"predictedOccupancyTomorrow\": predicted };",
+      "output" : {
+        "type" : "TIME_SERIES",
+        "strategy" : {
+          "type" : "IMMEDIATE",
+          "processCfs" : true,
+          "saveLatest" : true,
+          "saveTimeSeries" : true,
+          "sendWsUpdate" : true,
+          "ttl" : 0
+        }
+      }
+    },
+    "configurationVersion" : 0,
+    "debugSettings" : {
+      "allEnabled" : false,
+      "allEnabledUntil" : 1779982101015,
+      "failuresEnabled" : false
+    },
+    "name" : "Garage predicted occupancy tomorrow calculation",
+    "tenantId" : {
+      "entityType" : "TENANT",
+      "id" : "b9e12dd0-52d5-11f1-bdfb-2fcbd7265065"
+    },
+    "type" : "SCRIPT"
+  }, {
+    "additionalInfo" : {
+      "aiGenerated" : true
+    },
+    "configuration" : {
+      "type" : "ALARM",
+      "arguments" : {
+        "occupancyRate" : {
+          "refEntityKey" : {
+            "key" : "occupancyRate",
+            "type" : "TS_LATEST"
+          }
+        }
+      },
+      "clearRule" : {
+        "alarmDetails" : "Occupancy returned to normal: ${occupancyRate}%",
+        "condition" : {
+          "type" : "SIMPLE",
+          "expression" : {
+            "type" : "SIMPLE",
+            "filters" : [ {
+              "argument" : "occupancyRate",
+              "operation" : "AND",
+              "predicates" : [ {
+                "type" : "NUMERIC",
+                "operation" : "LESS_OR_EQUAL",
+                "value" : {
+                  "dynamicValueArgument" : null,
+                  "staticValue" : 90.0
+                }
+              } ],
+              "valueType" : "NUMERIC"
+            } ],
+            "operation" : "AND"
+          },
+          "schedule" : null
+        },
+        "dashboardId" : null
+      },
+      "createRules" : {
+        "CRITICAL" : {
+          "alarmDetails" : "High occupancy detected: ${occupancyRate}%",
+          "condition" : {
+            "type" : "SIMPLE",
+            "expression" : {
+              "type" : "SIMPLE",
+              "filters" : [ {
+                "argument" : "occupancyRate",
+                "operation" : "AND",
+                "predicates" : [ {
+                  "type" : "NUMERIC",
+                  "operation" : "GREATER",
+                  "value" : {
+                    "dynamicValueArgument" : null,
+                    "staticValue" : 90.0
+                  }
+                } ],
+                "valueType" : "NUMERIC"
+              } ],
+              "operation" : "AND"
+            },
+            "schedule" : null
+          },
+          "dashboardId" : null
+        }
+      },
+      "output" : null,
+      "propagate" : true,
+      "propagateRelationTypes" : null,
+      "propagateToOwner" : true,
+      "propagateToOwnerHierarchy" : true,
+      "propagateToTenant" : true
+    },
+    "configurationVersion" : 0,
+    "debugSettings" : {
+      "allEnabled" : false,
+      "allEnabledUntil" : 1779982093337,
+      "failuresEnabled" : false
+    },
+    "name" : "HighOccupancyWarning",
+    "tenantId" : {
+      "entityType" : "TENANT",
+      "id" : "b9e12dd0-52d5-11f1-bdfb-2fcbd7265065"
+    },
+    "type" : "ALARM"
+  } ]
+}

@@ -1,0 +1,71 @@
+{
+  "entityType" : "CUSTOMER",
+  "entity" : {
+    "additionalInfo" : {
+      "aiGenerated" : true,
+      "allowWhiteLabeling" : true,
+      "homeDashboardHideToolbar" : true
+    },
+    "address" : null,
+    "address2" : null,
+    "city" : null,
+    "country" : null,
+    "customMenuId" : null,
+    "customerId" : null,
+    "email" : null,
+    "externalId" : null,
+    "id" : {
+      "entityType" : "CUSTOMER",
+      "id" : "bd9c4750-5aa7-11f1-8462-81b05148cbdb"
+    },
+    "name" : "Munich EasyPark",
+    "ownerId" : null,
+    "parentCustomerId" : null,
+    "phone" : null,
+    "state" : null,
+    "title" : "Munich EasyPark",
+    "zip" : null
+  },
+  "relations" : [ {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "CUSTOMER",
+      "id" : "bd9c4750-5aa7-11f1-8462-81b05148cbdb"
+    },
+    "to" : {
+      "entityType" : "ASSET",
+      "id" : "bdd92940-5aa7-11f1-8462-81b05148cbdb"
+    },
+    "type" : "Operates",
+    "typeGroup" : "COMMON",
+    "version" : 17595698
+  } ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ {
+      "booleanValue" : null,
+      "doubleValue" : 15.5,
+      "jsonValue" : null,
+      "key" : "basePrice",
+      "lastUpdateTs" : 1779981191354,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : 45.0,
+      "jsonValue" : null,
+      "key" : "criticalTempLimit",
+      "lastUpdateTs" : 1779981191354,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "maintenanceThresholdCycles",
+      "lastUpdateTs" : 1779981191354,
+      "longValue" : 5000,
+      "strValue" : null
+    } ]
+  },
+  "calculatedFields" : [ ]
+}

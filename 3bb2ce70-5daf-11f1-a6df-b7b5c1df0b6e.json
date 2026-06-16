@@ -1,0 +1,103 @@
+{
+  "entityType" : "DEVICE",
+  "entity" : {
+    "additionalInfo" : {
+      "aiGenerated" : true
+    },
+    "customerId" : {
+      "entityType" : "CUSTOMER",
+      "id" : "bd9c4750-5aa7-11f1-8462-81b05148cbdb"
+    },
+    "deviceData" : {
+      "configuration" : {
+        "type" : "DEFAULT",
+        "type" : "DEFAULT"
+      },
+      "transportConfiguration" : {
+        "type" : "DEFAULT"
+      }
+    },
+    "deviceProfileId" : {
+      "entityType" : "DEVICE_PROFILE",
+      "id" : "bdf53cc0-5aa7-11f1-8462-81b05148cbdb"
+    },
+    "externalId" : null,
+    "firmwareId" : null,
+    "id" : {
+      "entityType" : "DEVICE",
+      "id" : "be01e6f0-5aa7-11f1-8462-81b05148cbdb"
+    },
+    "label" : "Space 01",
+    "name" : "Parking Space Sensor 01",
+    "ownerId" : {
+      "entityType" : "CUSTOMER",
+      "id" : "bd9c4750-5aa7-11f1-8462-81b05148cbdb"
+    },
+    "softwareId" : null,
+    "type" : "ParkingSensor"
+  },
+  "credentials" : {
+    "credentialsId" : "r8Z27fKQCG6W2QJTLGBh",
+    "credentialsType" : "ACCESS_TOKEN",
+    "credentialsValue" : null
+  },
+  "relations" : [ {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "ASSET",
+      "id" : "bdd92940-5aa7-11f1-8462-81b05148cbdb"
+    },
+    "to" : {
+      "entityType" : "DEVICE",
+      "id" : "be01e6f0-5aa7-11f1-8462-81b05148cbdb"
+    },
+    "type" : "GarageToParkingSensor",
+    "typeGroup" : "COMMON",
+    "version" : 17595694
+  } ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ {
+      "booleanValue" : false,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "active",
+      "lastUpdateTs" : 1781263973556,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "inactivityAlarmTime",
+      "lastUpdateTs" : 1781263973552,
+      "longValue" : 1781263973551,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "lastActivityTime",
+      "lastUpdateTs" : 1781263338531,
+      "longValue" : 1781263335733,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : 0.1,
+      "jsonValue" : null,
+      "key" : "positionX",
+      "lastUpdateTs" : 1779981191992,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : 0.2,
+      "jsonValue" : null,
+      "key" : "positionY",
+      "lastUpdateTs" : 1779981191992,
+      "longValue" : null,
+      "strValue" : null
+    } ],
+    "SHARED_SCOPE" : [ ]
+  },
+  "calculatedFields" : [ ]
+}

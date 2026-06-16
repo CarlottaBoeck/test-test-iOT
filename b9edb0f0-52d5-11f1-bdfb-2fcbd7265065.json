@@ -1,0 +1,126 @@
+{
+  "entityType" : "DEVICE_PROFILE",
+  "entity" : {
+    "default" : false,
+    "defaultDashboardId" : null,
+    "defaultEdgeRuleChainId" : null,
+    "defaultQueueName" : null,
+    "defaultRuleChainId" : null,
+    "description" : "Virtual device representing the booking integration for tracking employee reservations and space assignments.",
+    "externalId" : null,
+    "firmwareId" : null,
+    "id" : {
+      "entityType" : "DEVICE_PROFILE",
+      "id" : "bdfd2c00-5aa7-11f1-8462-81b05148cbdb"
+    },
+    "image" : null,
+    "name" : "BookingSystem",
+    "profileData" : {
+      "alarms" : null,
+      "configuration" : {
+        "type" : "DEFAULT"
+      },
+      "provisionConfiguration" : null,
+      "transportConfiguration" : {
+        "type" : "DEFAULT"
+      }
+    },
+    "provisionDeviceKey" : null,
+    "provisionType" : "DISABLED",
+    "softwareId" : null,
+    "transportType" : "DEFAULT",
+    "type" : "DEFAULT"
+  },
+  "relations" : [ ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  },
+  "calculatedFields" : [ {
+    "additionalInfo" : {
+      "aiGenerated" : true
+    },
+    "configuration" : {
+      "type" : "ALARM",
+      "arguments" : {
+        "bookingStatus" : {
+          "refEntityKey" : {
+            "key" : "bookingStatus",
+            "type" : "TS_LATEST"
+          }
+        }
+      },
+      "clearRule" : {
+        "alarmDetails" : "Booking status cleared: ${bookingStatus}",
+        "condition" : {
+          "type" : "SIMPLE",
+          "expression" : {
+            "type" : "SIMPLE",
+            "filters" : [ {
+              "argument" : "bookingStatus",
+              "operation" : "AND",
+              "predicates" : [ {
+                "type" : "STRING",
+                "ignoreCase" : false,
+                "operation" : "NOT_EQUAL",
+                "value" : {
+                  "dynamicValueArgument" : null,
+                  "staticValue" : "error"
+                }
+              } ],
+              "valueType" : "STRING"
+            } ],
+            "operation" : "AND"
+          },
+          "schedule" : null
+        },
+        "dashboardId" : null
+      },
+      "createRules" : {
+        "CRITICAL" : {
+          "alarmDetails" : "Booking double entry detected. Status: ${bookingStatus}",
+          "condition" : {
+            "type" : "SIMPLE",
+            "expression" : {
+              "type" : "SIMPLE",
+              "filters" : [ {
+                "argument" : "bookingStatus",
+                "operation" : "AND",
+                "predicates" : [ {
+                  "type" : "STRING",
+                  "ignoreCase" : false,
+                  "operation" : "EQUAL",
+                  "value" : {
+                    "dynamicValueArgument" : null,
+                    "staticValue" : "error"
+                  }
+                } ],
+                "valueType" : "STRING"
+              } ],
+              "operation" : "AND"
+            },
+            "schedule" : null
+          },
+          "dashboardId" : null
+        }
+      },
+      "output" : null,
+      "propagate" : true,
+      "propagateRelationTypes" : null,
+      "propagateToOwner" : true,
+      "propagateToOwnerHierarchy" : true,
+      "propagateToTenant" : true
+    },
+    "configurationVersion" : 0,
+    "debugSettings" : {
+      "allEnabled" : false,
+      "allEnabledUntil" : 1779982093393,
+      "failuresEnabled" : false
+    },
+    "name" : "BookingDoubleEntry",
+    "tenantId" : {
+      "entityType" : "TENANT",
+      "id" : "b9e12dd0-52d5-11f1-bdfb-2fcbd7265065"
+    },
+    "type" : "ALARM"
+  } ]
+}
