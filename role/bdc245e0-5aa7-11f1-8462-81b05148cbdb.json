@@ -1,0 +1,30 @@
+{
+  "entityType" : "ROLE",
+  "entity" : {
+    "customerId" : {
+      "entityType" : "CUSTOMER",
+      "id" : "13814000-1dd2-11b2-8080-808080808080"
+    },
+    "excludedPermissions" : {
+      "AI" : [ "ALL" ]
+    },
+    "externalId" : null,
+    "name" : "Smart Parking Platform Administrator",
+    "permissions" : {
+      "ALL" : [ "ALL" ]
+    },
+    "type" : "GENERIC",
+    "additionalInfo" : {
+      "aiGenerated" : true
+    },
+    "id" : {
+      "entityType" : "ROLE",
+      "id" : "bdc245e0-5aa7-11f1-8462-81b05148cbdb"
+    },
+    "ownerId" : null
+  },
+  "relations" : [ ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "entityType" : "ROLE",
+  "entity" : {
+    "customerId" : {
+      "entityType" : "CUSTOMER",
+      "id" : "bd9c4750-5aa7-11f1-8462-81b05148cbdb"
+    },
+    "excludedPermissions" : {
+      "AI" : [ "ALL" ]
+    },
+    "externalId" : null,
+    "name" : "Employee",
+    "permissions" : {
+      "ALL" : [ "READ", "RPC_CALL", "READ_CREDENTIALS", "READ_ATTRIBUTES", "READ_TELEMETRY", "WRITE", "WRITE_CREDENTIALS", "WRITE_ATTRIBUTES", "WRITE_TELEMETRY" ]
+    },
+    "type" : "GENERIC",
+    "additionalInfo" : {
+      "aiGenerated" : true
+    },
+    "id" : {
+      "entityType" : "ROLE",
+      "id" : "bdcfda70-5aa7-11f1-8462-81b05148cbdb"
+    },
+    "ownerId" : {
+      "entityType" : "CUSTOMER",
+      "id" : "bd9c4750-5aa7-11f1-8462-81b05148cbdb"
+    }
+  },
+  "relations" : [ ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  }
+}

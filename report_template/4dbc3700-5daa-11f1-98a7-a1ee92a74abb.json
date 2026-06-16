@@ -1,0 +1,216 @@
+{
+  "entityType" : "REPORT_TEMPLATE",
+  "entity" : {
+    "configuration" : {
+      "format" : "PDF",
+      "namePattern" : "report-%d{yyyy-MM-dd_HH:mm:ss}",
+      "timeDataPattern" : "yyyy-MM-dd HH:mm:ss",
+      "format" : "PDF",
+      "entityAliases" : [ ],
+      "filters" : [ ],
+      "components" : [ {
+        "alignment" : "center",
+        "background" : null,
+        "borderColor" : null,
+        "borderRadius" : null,
+        "borderWidth" : null,
+        "config" : {
+          "baseUrl" : "https://eu.thingsboard.cloud",
+          "dashboardId" : "bec229b0-5aa7-11f1-8462-81b05148cbdb",
+          "namePattern" : null,
+          "state" : "",
+          "timewindow" : {
+            "selectedTab" : 1,
+            "history" : {
+              "historyType" : 0,
+              "interval" : 1000,
+              "timewindowMs" : 86400000
+            }
+          },
+          "timezone" : "Europe/Berlin",
+          "type" : "png",
+          "useCurrentUserCredentials" : false,
+          "useDashboardTimewindow" : true,
+          "userId" : null
+        },
+        "customWidth" : 100,
+        "dataSources" : [ {
+          "alarmFilterConfig" : null,
+          "dataKeys" : [ ],
+          "deviceId" : null,
+          "entityAliasId" : null,
+          "filterId" : null,
+          "latestDataKeys" : null,
+          "type" : "entity"
+        } ],
+        "margins" : null,
+        "paddings" : null,
+        "subType" : null,
+        "type" : "DASHBOARD",
+        "widthType" : "fitWidth"
+      }, {
+        "alignment" : "center",
+        "background" : null,
+        "borderColor" : null,
+        "borderRadius" : null,
+        "borderWidth" : null,
+        "config" : {
+          "baseUrl" : "https://eu.thingsboard.cloud",
+          "dashboardId" : "bed11dd0-5aa7-11f1-8462-81b05148cbdb",
+          "namePattern" : null,
+          "state" : "",
+          "timewindow" : {
+            "selectedTab" : 1,
+            "history" : {
+              "historyType" : 0,
+              "interval" : 1000,
+              "timewindowMs" : 86400000
+            }
+          },
+          "timezone" : "Europe/Berlin",
+          "type" : "png",
+          "useCurrentUserCredentials" : false,
+          "useDashboardTimewindow" : true,
+          "userId" : null
+        },
+        "customWidth" : 100,
+        "dataSources" : [ {
+          "alarmFilterConfig" : null,
+          "dataKeys" : [ ],
+          "deviceId" : null,
+          "entityAliasId" : null,
+          "filterId" : null,
+          "latestDataKeys" : null,
+          "type" : "entity"
+        } ],
+        "margins" : null,
+        "paddings" : null,
+        "subType" : null,
+        "type" : "DASHBOARD",
+        "widthType" : "fitWidth"
+      } ],
+      "footer" : {
+        "components" : [ {
+          "background" : null,
+          "borderColor" : null,
+          "borderRadius" : null,
+          "borderWidth" : null,
+          "leftVerticalAlignment" : "middle",
+          "leftView" : {
+            "background" : null,
+            "borderColor" : null,
+            "borderRadius" : null,
+            "borderWidth" : null,
+            "dataSources" : [ ],
+            "margins" : null,
+            "paddings" : null,
+            "subType" : null,
+            "type" : "RICH_TEXT",
+            "value" : "<p>EasyPark GmbH</p>\n<table style=\"border-collapse: collapse; width: 100%; border-width: 0px; height: 48px;\" border=\"1\"><colgroup><col style=\"width: 100%;\"></colgroup>\n<tbody>\n<tr style=\"height: 24px;\">\n<td style=\"border-width: 0px; height: 24px; line-height: 1.5; text-align: left;\"><span style=\"font-size: 14px; color: rgb(117, 117, 117);\">Am Stadtpark 20, 81243 München</span></td>\n</tr>\n</tbody>\n</table>"
+          },
+          "margins" : null,
+          "paddings" : {
+            "bottom" : 0,
+            "left" : 6,
+            "right" : 6,
+            "top" : 0
+          },
+          "rightVerticalAlignment" : "middle",
+          "rightView" : {
+            "alignment" : "right",
+            "background" : "#8BC34A0A",
+            "borderColor" : null,
+            "borderRadius" : null,
+            "borderWidth" : null,
+            "customWidth" : 145,
+            "dataSources" : [ {
+              "alarmFilterConfig" : {
+                "assigneeId" : null,
+                "searchPropagatedAlarms" : false,
+                "severityList" : null,
+                "statusList" : [ "ACTIVE" ],
+                "typeList" : null
+              },
+              "dataKeys" : [ null ],
+              "deviceId" : null,
+              "entityAliasId" : null,
+              "filterId" : null,
+              "latestDataKeys" : null,
+              "type" : "device"
+            } ],
+            "imageUrl" : "tb-image;/api/images/tenant/Gemini_Generated_Image_8y798j8y798j8y79.jpeg",
+            "margins" : null,
+            "paddings" : null,
+            "sourceType" : "image",
+            "subType" : null,
+            "type" : "IMAGE",
+            "widthType" : "custom"
+          },
+          "splitGap" : 10,
+          "splitPosition" : 50.0,
+          "subType" : null,
+          "type" : "SPLIT_VIEW"
+        } ],
+        "enabled" : true,
+        "firstPage" : {
+          "components" : [ ],
+          "enabled" : false,
+          "firstPage" : null
+        }
+      },
+      "header" : {
+        "components" : [ {
+          "background" : null,
+          "borderColor" : null,
+          "borderRadius" : null,
+          "borderWidth" : null,
+          "color" : "#000",
+          "dataSources" : [ ],
+          "font" : {
+            "family" : "Roboto",
+            "size" : 40.0,
+            "style" : "normal",
+            "weight" : "normal"
+          },
+          "height" : null,
+          "margins" : null,
+          "paddings" : null,
+          "subType" : null,
+          "textAlignment" : "center",
+          "type" : "HEADING",
+          "value" : "Daily Occupancy Report",
+          "verticalAlignment" : "middle"
+        } ],
+        "enabled" : true,
+        "firstPage" : {
+          "components" : [ ],
+          "enabled" : false,
+          "firstPage" : null
+        }
+      },
+      "pageBackground" : "#fff",
+      "pageMargins" : {
+        "bottom" : 20,
+        "left" : 20,
+        "right" : 20,
+        "top" : 20
+      },
+      "pageOrientation" : "PORTRAIT",
+      "pageSize" : "A4"
+    },
+    "customerId" : {
+      "entityType" : "CUSTOMER",
+      "id" : "13814000-1dd2-11b2-8080-808080808080"
+    },
+    "description" : null,
+    "externalId" : null,
+    "format" : "PDF",
+    "id" : {
+      "entityType" : "REPORT_TEMPLATE",
+      "id" : "4dbc3700-5daa-11f1-98a7-a1ee92a74abb"
+    },
+    "name" : "Daily Report",
+    "ownerId" : null,
+    "type" : "REPORT"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "entityType" : "SCHEDULER_EVENT",
+  "entity" : {
+    "additionalInfo" : null,
+    "configuration" : {
+      "reportTemplateId" : {
+        "entityType" : "REPORT_TEMPLATE",
+        "id" : "4dbc3700-5daa-11f1-98a7-a1ee92a74abb"
+      },
+      "userId" : {
+        "entityType" : "USER",
+        "id" : "ba099d60-52d5-11f1-bdfb-2fcbd7265065"
+      },
+      "timezone" : "Europe/Berlin",
+      "targets" : null,
+      "notificationTemplateId" : null
+    },
+    "customerId" : {
+      "entityType" : "CUSTOMER",
+      "id" : "13814000-1dd2-11b2-8080-808080808080"
+    },
+    "enabled" : true,
+    "externalId" : null,
+    "id" : {
+      "entityType" : "SCHEDULER_EVENT",
+      "id" : "cfc1ee60-5dab-11f1-a6df-b7b5c1df0b6e"
+    },
+    "name" : "Daily Report",
+    "originatorId" : null,
+    "ownerId" : null,
+    "schedule" : {
+      "timezone" : "Europe/Berlin",
+      "startTime" : 1780293600000,
+      "repeat" : {
+        "type" : "DAILY",
+        "endsOn" : 1809036000000
+      }
+    },
+    "type" : "generateReport"
+  }
+}

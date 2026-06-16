@@ -1,0 +1,624 @@
+{
+    "entityType": "RULE_CHAIN",
+    "entity": {
+        "additionalInfo": null,
+        "configuration": null,
+        "debugMode": false,
+        "externalId": null,
+        "firstRuleNodeId": {
+            "entityType": "RULE_NODE",
+            "id": "b9e41405-52d5-11f1-bdfb-2fcbd7265065"
+        },
+        "id": {
+            "entityType": "RULE_CHAIN",
+            "id": "b9e2b470-52d5-11f1-bdfb-2fcbd7265065"
+        },
+        "name": "Root Rule Chain",
+        "root": true,
+        "type": "CORE"
+    },
+    "metaData": {
+        "firstNodeIndex": 0,
+        "connections": [
+            {
+                "fromIndex": 0,
+                "toIndex": 2,
+                "type": "False"
+            },
+            {
+                "fromIndex": 0,
+                "toIndex": 1,
+                "type": "True"
+            },
+            {
+                "fromIndex": 1,
+                "toIndex": 2,
+                "type": "False"
+            },
+            {
+                "fromIndex": 1,
+                "toIndex": 3,
+                "type": "True"
+            },
+            {
+                "fromIndex": 3,
+                "toIndex": 4,
+                "type": "Success"
+            },
+            {
+                "fromIndex": 2,
+                "toIndex": 5,
+                "type": "Post attributes"
+            },
+            {
+                "fromIndex": 2,
+                "toIndex": 6,
+                "type": "RPC Request from Device"
+            },
+            {
+                "fromIndex": 2,
+                "toIndex": 7,
+                "type": "Other"
+            },
+            {
+                "fromIndex": 2,
+                "toIndex": 8,
+                "type": "RPC Request to Device"
+            },
+            {
+                "fromIndex": 2,
+                "toIndex": 9,
+                "type": "Post telemetry"
+            },
+            {
+                "fromIndex": 9,
+                "toIndex": 10,
+                "type": "True"
+            },
+            {
+                "fromIndex": 9,
+                "toIndex": 14,
+                "type": "False"
+            },
+            {
+                "fromIndex": 10,
+                "toIndex": 11,
+                "type": "Success"
+            },
+            {
+                "fromIndex": 11,
+                "toIndex": 12,
+                "type": "Success"
+            },
+            {
+                "fromIndex": 10,
+                "toIndex": 13,
+                "type": "Success"
+            },
+            {
+                "fromIndex": 14,
+                "toIndex": 15,
+                "type": "True"
+            },
+            {
+                "fromIndex": 14,
+                "toIndex": 16,
+                "type": "False"
+            },
+            {
+                "fromIndex": 15,
+                "toIndex": 16,
+                "type": "Success"
+            },
+            {
+                "fromIndex": 16,
+                "toIndex": 17,
+                "type": "Success"
+            },
+            {
+                "fromIndex": 17,
+                "toIndex": 18,
+                "type": "True"
+            }
+        ],
+        "nodes": [
+            {
+                "additionalInfo": {
+                    "description": null,
+                    "layoutX": 255,
+                    "layoutY": 301
+                },
+                "configuration": {
+                    "originatorTypes": [
+                        "ENTITY_GROUP"
+                    ]
+                },
+                "configurationVersion": 0,
+                "createdTime": 0,
+                "debugSettings": null,
+                "externalId": null,
+                "id": {
+                    "entityType": "RULE_NODE",
+                    "id": "b9e41405-52d5-11f1-bdfb-2fcbd7265065"
+                },
+                "name": "Is Entity Group",
+                "queueName": null,
+                "ruleChainId": null,
+                "singletonMode": false,
+                "type": "org.thingsboard.rule.engine.filter.TbOriginatorTypeFilterNode"
+            },
+            {
+                "additionalInfo": {
+                    "layoutX": 319,
+                    "layoutY": 109
+                },
+                "configuration": {
+                    "messageTypes": [
+                        "POST_ATTRIBUTES_REQUEST",
+                        "RPC_CALL_FROM_SERVER_TO_DEVICE"
+                    ]
+                },
+                "configurationVersion": 0,
+                "createdTime": 0,
+                "debugSettings": null,
+                "externalId": null,
+                "id": {
+                    "entityType": "RULE_NODE",
+                    "id": "b9e41406-52d5-11f1-bdfb-2fcbd7265065"
+                },
+                "name": "Post attributes or RPC request",
+                "queueName": null,
+                "ruleChainId": null,
+                "singletonMode": false,
+                "type": "org.thingsboard.rule.engine.filter.TbMsgTypeFilterNode"
+            },
+            {
+                "additionalInfo": {
+                    "layoutX": 566,
+                    "layoutY": 302
+                },
+                "configuration": {
+                    "version": 0
+                },
+                "configurationVersion": 0,
+                "createdTime": 0,
+                "debugSettings": null,
+                "externalId": null,
+                "id": {
+                    "entityType": "RULE_NODE",
+                    "id": "b9e41401-52d5-11f1-bdfb-2fcbd7265065"
+                },
+                "name": "Message Type Switch",
+                "queueName": null,
+                "ruleChainId": null,
+                "singletonMode": false,
+                "type": "org.thingsboard.rule.engine.filter.TbMsgTypeSwitchNode"
+            },
+            {
+                "additionalInfo": {
+                    "layoutX": 627,
+                    "layoutY": 108
+                },
+                "configuration": {
+                    "entityGroupId": null,
+                    "entityGroupIsMessageOriginator": true
+                },
+                "configurationVersion": 1,
+                "createdTime": 0,
+                "debugSettings": null,
+                "externalId": null,
+                "id": {
+                    "entityType": "RULE_NODE",
+                    "id": "b9e41407-52d5-11f1-bdfb-2fcbd7265065"
+                },
+                "name": "Duplicate To Group Entities",
+                "queueName": null,
+                "ruleChainId": null,
+                "singletonMode": false,
+                "type": "org.thingsboard.rule.engine.transform.TbDuplicateMsgToGroupNode"
+            },
+            {
+                "additionalInfo": {
+                    "description": null,
+                    "layoutX": 1601,
+                    "layoutY": 147
+                },
+                "configuration": {
+                    "defaultTTL": 0,
+                    "useServerTs": false,
+                    "processingSettings": {
+                        "type": "ON_EVERY_MESSAGE"
+                    }
+                },
+                "configurationVersion": 1,
+                "createdTime": 0,
+                "debugSettings": null,
+                "externalId": null,
+                "id": {
+                    "entityType": "RULE_NODE",
+                    "id": "b9e3ecf0-52d5-11f1-bdfb-2fcbd7265065"
+                },
+                "name": "Save Booking Timeseries",
+                "queueName": null,
+                "ruleChainId": null,
+                "singletonMode": false,
+                "type": "org.thingsboard.rule.engine.telemetry.TbMsgTimeseriesNode"
+            },
+            {
+                "additionalInfo": {
+                    "layoutX": 1000,
+                    "layoutY": 167
+                },
+                "configuration": {
+                    "processingSettings": {
+                        "type": "ON_EVERY_MESSAGE"
+                    },
+                    "scope": "CLIENT_SCOPE",
+                    "notifyDevice": false,
+                    "sendAttributesUpdatedNotification": false,
+                    "updateAttributesOnlyOnValueChange": true
+                },
+                "configurationVersion": 3,
+                "createdTime": 0,
+                "debugSettings": null,
+                "externalId": null,
+                "id": {
+                    "entityType": "RULE_NODE",
+                    "id": "b9e41400-52d5-11f1-bdfb-2fcbd7265065"
+                },
+                "name": "Save Attributes",
+                "queueName": null,
+                "ruleChainId": null,
+                "singletonMode": false,
+                "type": "org.thingsboard.rule.engine.telemetry.TbMsgAttributesNode"
+            },
+            {
+                "additionalInfo": {
+                    "layoutX": 1000,
+                    "layoutY": 381
+                },
+                "configuration": {
+                    "scriptLang": "TBEL",
+                    "jsScript": "return '\\nIncoming message:\\n' + JSON.stringify(msg) + '\\nIncoming metadata:\\n' + JSON.stringify(metadata);",
+                    "tbelScript": "return '\\nIncoming message:\\n' + JSON.stringify(msg) + '\\nIncoming metadata:\\n' + JSON.stringify(metadata);"
+                },
+                "configurationVersion": 0,
+                "createdTime": 0,
+                "debugSettings": null,
+                "externalId": null,
+                "id": {
+                    "entityType": "RULE_NODE",
+                    "id": "b9e41402-52d5-11f1-bdfb-2fcbd7265065"
+                },
+                "name": "Log RPC from Device",
+                "queueName": null,
+                "ruleChainId": null,
+                "singletonMode": false,
+                "type": "org.thingsboard.rule.engine.action.TbLogNode"
+            },
+            {
+                "additionalInfo": {
+                    "layoutX": 1000,
+                    "layoutY": 494
+                },
+                "configuration": {
+                    "scriptLang": "TBEL",
+                    "jsScript": "return '\\nIncoming message:\\n' + JSON.stringify(msg) + '\\nIncoming metadata:\\n' + JSON.stringify(metadata);",
+                    "tbelScript": "return '\\nIncoming message:\\n' + JSON.stringify(msg) + '\\nIncoming metadata:\\n' + JSON.stringify(metadata);"
+                },
+                "configurationVersion": 0,
+                "createdTime": 0,
+                "debugSettings": null,
+                "externalId": null,
+                "id": {
+                    "entityType": "RULE_NODE",
+                    "id": "b9e41403-52d5-11f1-bdfb-2fcbd7265065"
+                },
+                "name": "Log Other",
+                "queueName": null,
+                "ruleChainId": null,
+                "singletonMode": false,
+                "type": "org.thingsboard.rule.engine.action.TbLogNode"
+            },
+            {
+                "additionalInfo": {
+                    "layoutX": 1000,
+                    "layoutY": 583
+                },
+                "configuration": {
+                    "timeoutInSeconds": 60
+                },
+                "configurationVersion": 0,
+                "createdTime": 0,
+                "debugSettings": null,
+                "externalId": null,
+                "id": {
+                    "entityType": "RULE_NODE",
+                    "id": "b9e41404-52d5-11f1-bdfb-2fcbd7265065"
+                },
+                "name": "RPC Call Request",
+                "queueName": null,
+                "ruleChainId": null,
+                "singletonMode": false,
+                "type": "org.thingsboard.rule.engine.rpc.TbSendRPCRequestNode"
+            },
+            {
+                "additionalInfo": {
+                    "description": "Prüft ob Nachricht vom Buchungs-Asset/Device kommt",
+                    "layoutX": 1002,
+                    "layoutY": 279
+                },
+                "configuration": {
+                    "scriptLang": "JS",
+                    "jsScript": "return metadata.deviceName == \"external_booking_platform\" || metadata.entityName == \"External Booking Platform\";",
+                    "tbelScript": "return metadata.deviceName == \"external_booking_platform\" || metadata.entityName == \"External Booking Platform\";"
+                },
+                "configurationVersion": 0,
+                "createdTime": 0,
+                "debugSettings": null,
+                "externalId": null,
+                "id": {
+                    "entityType": "RULE_NODE",
+                    "id": "a156ae30-5df1-11f1-a6df-b7b5c1df0b6e"
+                },
+                "name": "Check Booking Platform",
+                "queueName": null,
+                "ruleChainId": null,
+                "singletonMode": false,
+                "type": "org.thingsboard.rule.engine.filter.TbJsFilterNode"
+            },
+            {
+                "additionalInfo": {
+                    "description": "Auslastungsberechnung + zeitbasierte Preisprognose (Erweiterung 1)",
+                    "layoutX": 1295,
+                    "layoutY": 150
+                },
+                "configuration": {
+                    "scriptLang": "JS",
+                    "jsScript": "// ===== PARKING & BOOKING LOGIC mit zeitbasierter Preisprognose =====\nvar totalSpaces = 100;\nvar occupiedSpaces = msg.occupied_spaces;\nif (occupiedSpaces == null) occupiedSpaces = 0;\noccupiedSpaces = Number(occupiedSpaces);\nif (isNaN(occupiedSpaces)) occupiedSpaces = 0;\nif (occupiedSpaces < 0) occupiedSpaces = 0;\nif (occupiedSpaces > totalSpaces) occupiedSpaces = totalSpaces;\n\nvar freeSpaces = totalSpaces - occupiedSpaces;\nvar occupancyRate = (occupiedSpaces / totalSpaces) * 100;\n\nvar basePrice = msg.base_price_per_hour;\nif (basePrice == null) basePrice = 2.0;\nbasePrice = Number(basePrice);\nif (isNaN(basePrice)) basePrice = 2.0;\n\nvar duration = msg.requested_duration_hours;\nif (duration == null) duration = 1;\nduration = Number(duration);\nif (isNaN(duration)) duration = 1;\n\n// === Auslastungsbasierter Preis ===\nvar priceFactor = 1.0;\nvar demandLevel = \"LOW\";\nif (occupancyRate < 50) { priceFactor = 1.0; demandLevel = \"LOW\"; }\nelse if (occupancyRate < 80) { priceFactor = 1.2; demandLevel = \"MEDIUM\"; }\nelse if (occupancyRate < 95) { priceFactor = 1.5; demandLevel = \"HIGH\"; }\nelse { priceFactor = 2.0; demandLevel = \"CRITICAL\"; }\n\n// === Erweiterung 1: Zeitbasierter Prognose-Multiplikator ===\nvar now = new Date();\nvar dayOfWeek = now.getDay(); // 0=So, 1=Mo, 2=Di ... 6=Sa\nvar hour = now.getHours();\nvar forecastMultiplier = 1.0;\nvar forecastLabel = \"Normal\";\n\nif (dayOfWeek >= 1 && dayOfWeek <= 5) { // Wochentag\n    if (hour >= 7 && hour < 9) { forecastMultiplier = 1.3; forecastLabel = \"Morgenspitze\"; }\n    else if (hour >= 9 && hour < 12) { forecastMultiplier = 1.2; forecastLabel = \"Vormittag hoch\"; }\n    else if (hour >= 12 && hour < 14) { forecastMultiplier = 1.25; forecastLabel = \"Mittagspitze\"; }\n    else if (hour >= 17 && hour < 19) { forecastMultiplier = 1.4; forecastLabel = \"Abendspitze\"; }\n    else if (hour >= 22 || hour < 6) { forecastMultiplier = 0.7; forecastLabel = \"Niedrigtarif Nacht\"; }\n} else { // Wochenende\n    if (hour >= 10 && hour < 16) { forecastMultiplier = 1.1; forecastLabel = \"Wochenende tagsüber\"; }\n    else { forecastMultiplier = 0.8; forecastLabel = \"Wochenende ruhig\"; }\n}\n\nvar currentPricePerHour = Math.round(basePrice * priceFactor * forecastMultiplier * 100) / 100;\nvar bookingPrice = Math.round(currentPricePerHour * duration * 100) / 100;\n\n// === Prognose nächste Stunde ===\nvar nextHour = (hour + 1) % 24;\nvar forecastNextMultiplier = 1.0;\nif (dayOfWeek >= 1 && dayOfWeek <= 5) {\n    if (nextHour >= 7 && nextHour < 9) forecastNextMultiplier = 1.3;\n    else if (nextHour >= 17 && nextHour < 19) forecastNextMultiplier = 1.4;\n    else if (nextHour >= 22 || nextHour < 6) forecastNextMultiplier = 0.7;\n}\nvar forecastNextPrice = Math.round(basePrice * forecastNextMultiplier * 100) / 100;\n\n// === Buchungslogik ===\nvar bookingStatus = msg.booking_status;\nif (bookingStatus == null) bookingStatus = \"no_booking_request\";\nvar reservedSpaceId = \"none\";\nif (bookingStatus == \"requested\") {\n    if (freeSpaces > 0) {\n        bookingStatus = \"confirmed\";\n        reservedSpaceId = \"P-\" + (occupiedSpaces + 1);\n        occupiedSpaces = occupiedSpaces + 1;\n        freeSpaces = totalSpaces - occupiedSpaces;\n        occupancyRate = (occupiedSpaces / totalSpaces) * 100;\n    } else {\n        bookingStatus = \"rejected\";\n        reservedSpaceId = \"none\";\n    }\n}\n\n// === Display-Logik ===\nvar bookingAvailable = freeSpaces > 0;\nvar displayStatus = \"AVAILABLE\";\nvar displayMessage = freeSpaces + \" Plätze frei – \" + currentPricePerHour + \"€/h\";\nif (freeSpaces <= 0) { bookingAvailable = false; displayStatus = \"FULL\"; displayMessage = \"Parkhaus voll\"; }\nelse if (freeSpaces <= 10) { displayStatus = \"LIMITED\"; displayMessage = \"Nur noch \" + freeSpaces + \" Plätze frei\"; }\n\n// === Tagesreport Felder ===\nvar dailyRevenue = msg.daily_revenue;\nif (dailyRevenue == null) dailyRevenue = 0;\nvar dailyBookings = msg.daily_bookings;\nif (dailyBookings == null) dailyBookings = 0;\nif (bookingStatus == \"confirmed\") {\n    dailyRevenue = Math.round((dailyRevenue + bookingPrice) * 100) / 100;\n    dailyBookings = dailyBookings + 1;\n}\n\n// === Ergebnis ===\nmsg.total_spaces = totalSpaces;\nmsg.occupied_spaces = occupiedSpaces;\nmsg.free_spaces = freeSpaces;\nmsg.occupancy_rate = Math.round(occupancyRate * 100) / 100;\nmsg.base_price_per_hour = basePrice;\nmsg.current_price_per_hour = currentPricePerHour;\nmsg.booking_price = bookingPrice;\nmsg.demand_level = demandLevel;\nmsg.booking_status = bookingStatus;\nmsg.reserved_space_id = reservedSpaceId;\nmsg.booking_available = bookingAvailable;\nmsg.display_status = displayStatus;\nmsg.display_message = displayMessage;\nmsg.forecast_label = forecastLabel;\nmsg.forecast_multiplier = forecastMultiplier;\nmsg.forecast_next_hour_price = forecastNextPrice;\nmsg.daily_revenue = dailyRevenue;\nmsg.daily_bookings = dailyBookings;\nmsg.debug_script_executed = true;\nmsg.debug_free_spaces_before_booking = totalSpaces - Number(msg.occupied_spaces);\n\nreturn {msg: msg, metadata: metadata, msgType: msgType};",
+                    "tbelScript": "return {msg: msg, metadata: metadata, msgType: msgType};"
+                },
+                "configurationVersion": 0,
+                "createdTime": 0,
+                "debugSettings": null,
+                "externalId": null,
+                "id": {
+                    "entityType": "RULE_NODE",
+                    "id": "20239ed0-5d9d-11f1-98a7-a1ee92a74abb"
+                },
+                "name": "Calculate Parking & Booking Data",
+                "queueName": null,
+                "ruleChainId": null,
+                "singletonMode": false,
+                "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
+            },
+            {
+                "additionalInfo": {
+                    "description": "",
+                    "layoutX": 1932,
+                    "layoutY": 143
+                },
+                "configuration": {
+                    "scriptLang": "JS",
+                    "jsScript": "var displayMsg = {\n    free_spaces: msg.free_spaces,\n    occupancy_rate: msg.occupancy_rate,\n    current_price_per_hour: msg.current_price_per_hour,\n    booking_available: msg.booking_available,\n    display_status: msg.display_status,\n    display_message: msg.display_message,\n    forecast_label: msg.forecast_label,\n    forecast_next_hour_price: msg.forecast_next_hour_price\n};\nreturn {msg: displayMsg, metadata: metadata, msgType: msgType};",
+                    "tbelScript": "return {msg: msg, metadata: metadata, msgType: msgType};"
+                },
+                "configurationVersion": 0,
+                "createdTime": 0,
+                "debugSettings": null,
+                "externalId": null,
+                "id": {
+                    "entityType": "RULE_NODE",
+                    "id": "5b9551a1-5dcc-11f1-a6df-b7b5c1df0b6e"
+                },
+                "name": "Prepare Display Payload",
+                "queueName": null,
+                "ruleChainId": null,
+                "singletonMode": false,
+                "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
+            },
+            {
+                "additionalInfo": {
+                    "description": "",
+                    "layoutX": 2253,
+                    "layoutY": 143
+                },
+                "configuration": {
+                    "restEndpointUrlPattern": "https://eu.thingsboard.cloud/api/v1/e6c1p24qzf2b5x4evyp3/telemetry",
+                    "requestMethod": "POST",
+                    "useSimpleClientHttpFactory": false,
+                    "parseToPlainText": true,
+                    "ignoreRequestBody": false,
+                    "enableProxy": false,
+                    "useSystemProxyProperties": false,
+                    "proxyScheme": null,
+                    "proxyHost": null,
+                    "proxyPort": 0,
+                    "proxyUser": null,
+                    "proxyPassword": null,
+                    "readTimeoutMs": 0,
+                    "maxParallelRequestsCount": 0,
+                    "headers": {
+                        "Content-Type": "application/json"
+                    },
+                    "credentials": {
+                        "type": "anonymous"
+                    },
+                    "maxInMemoryBufferSizeInKb": 256
+                },
+                "configurationVersion": 3,
+                "createdTime": 0,
+                "debugSettings": null,
+                "externalId": null,
+                "id": {
+                    "entityType": "RULE_NODE",
+                    "id": "5b9551a0-5dcc-11f1-a6df-b7b5c1df0b6e"
+                },
+                "name": "Update Entrance Display",
+                "queueName": null,
+                "ruleChainId": null,
+                "singletonMode": false,
+                "type": "org.thingsboard.rule.engine.rest.TbRestApiCallNode"
+            },
+            {
+                "additionalInfo": {
+                    "description": null,
+                    "layoutX": 1601,
+                    "layoutY": 50
+                },
+                "configuration": {
+                    "defaultTTL": 0,
+                    "useServerTs": false,
+                    "processingSettings": {
+                        "type": "ON_EVERY_MESSAGE"
+                    }
+                },
+                "configurationVersion": 1,
+                "createdTime": 0,
+                "debugSettings": null,
+                "externalId": null,
+                "id": {
+                    "entityType": "RULE_NODE",
+                    "id": "a156ae31-5df1-11f1-a6df-b7b5c1df0b6e"
+                },
+                "name": "Save Other Timeseries",
+                "queueName": null,
+                "ruleChainId": null,
+                "singletonMode": false,
+                "type": "org.thingsboard.rule.engine.telemetry.TbMsgTimeseriesNode"
+            },
+            {
+                "additionalInfo": {
+                    "description": "Prüft ob Sensor P4 (E-Parkplatz) ist",
+                    "layoutX": 1100,
+                    "layoutY": 400
+                },
+                "configuration": {
+                    "scriptLang": "JS",
+                    "jsScript": "return metadata.deviceName == \"Parking Space Sensor 04\" || msg.e_parking == true;",
+                    "tbelScript": "return metadata.deviceName == \"Parking Space Sensor 04\" || msg.e_parking == true;"
+                },
+                "configurationVersion": 0,
+                "createdTime": 0,
+                "debugSettings": null,
+                "externalId": null,
+                "id": {
+                    "entityType": "RULE_NODE",
+                    "id": "ep001000-0001-11f1-0000-000000000001"
+                },
+                "name": "Check E-Parking P4",
+                "queueName": null,
+                "ruleChainId": null,
+                "singletonMode": false,
+                "type": "org.thingsboard.rule.engine.filter.TbJsFilterNode"
+            },
+            {
+                "additionalInfo": {
+                    "description": "Wetter-Check: P4 freigeben + Rabatt wenn Wetter gut",
+                    "layoutX": 1350,
+                    "layoutY": 400
+                },
+                "configuration": {
+                    "scriptLang": "JS",
+                    "jsScript": "// === E-Parkplatz P4: Wetter-basierte Freigabe & Preislogik ===\n// Wetterdaten werden als Telemetrie erwartet (z.B. von openweathermap via HTTP Integration)\n// Keys: weather_temp_c, weather_condition (\"clear\", \"rain\", \"snow\", \"fog\"), weather_wind_kmh\n\nvar weatherCondition = msg.weather_condition;\nif (weatherCondition == null) weatherCondition = \"clear\"; // Default: freigegeben\n\nvar weatherTemp = msg.weather_temp_c;\nif (weatherTemp == null) weatherTemp = 15;\nweatherTemp = Number(weatherTemp);\n\nvar windSpeed = msg.weather_wind_kmh;\nif (windSpeed == null) windSpeed = 0;\nwindSpeed = Number(windSpeed);\n\n// Gut: kein Regen, kein Schnee, kein starker Wind, nicht zu kalt\nvar goodWeather = (\n    weatherCondition != \"rain\" &&\n    weatherCondition != \"snow\" &&\n    weatherCondition != \"thunderstorm\" &&\n    weatherCondition != \"fog\" &&\n    weatherTemp > 5 &&\n    windSpeed < 50\n);\n\n// P4 Status setzen\nmsg.p4_ev_enabled = goodWeather;\nmsg.p4_weather_reason = goodWeather ? \"Wetter OK – E-Parkplatz aktiv\" : \"Schlechtes Wetter – E-Parkplatz gesperrt (\" + weatherCondition + \")\";\n\n// Rabatt bei gutem Wetter\nvar baseEVPrice = 3.0; // E-Parkplatz Grundpreis (inkl. Laden)\nif (goodWeather) {\n    msg.p4_price_per_hour = Math.round(baseEVPrice * 0.8 * 100) / 100; // 20% Rabatt\n    msg.p4_discount_label = \"20% Sonnenschein-Rabatt aktiv!\";\n} else {\n    msg.p4_price_per_hour = baseEVPrice;\n    msg.p4_discount_label = \"Kein Rabatt\";\n}\n\nmsg.p4_weather_temp = weatherTemp;\nmsg.p4_weather_condition = weatherCondition;\n\nreturn {msg: msg, metadata: metadata, msgType: msgType};",
+                    "tbelScript": "return {msg: msg, metadata: metadata, msgType: msgType};"
+                },
+                "configurationVersion": 0,
+                "createdTime": 0,
+                "debugSettings": null,
+                "externalId": null,
+                "id": {
+                    "entityType": "RULE_NODE",
+                    "id": "ep001000-0002-11f1-0000-000000000002"
+                },
+                "name": "E-Parking Weather Logic",
+                "queueName": null,
+                "ruleChainId": null,
+                "singletonMode": false,
+                "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
+            },
+            {
+                "additionalInfo": {
+                    "description": "Alle Sensor-Telemetrie speichern",
+                    "layoutX": 1600,
+                    "layoutY": 450
+                },
+                "configuration": {
+                    "defaultTTL": 0,
+                    "useServerTs": false,
+                    "processingSettings": {
+                        "type": "ON_EVERY_MESSAGE"
+                    }
+                },
+                "configurationVersion": 1,
+                "createdTime": 0,
+                "debugSettings": null,
+                "externalId": null,
+                "id": {
+                    "entityType": "RULE_NODE",
+                    "id": "ep001000-0003-11f1-0000-000000000003"
+                },
+                "name": "Save Sensor Timeseries",
+                "queueName": null,
+                "ruleChainId": null,
+                "singletonMode": false,
+                "type": "org.thingsboard.rule.engine.telemetry.TbMsgTimeseriesNode"
+            },
+            {
+                "additionalInfo": {
+                    "description": "Prüft ob Nachricht von Schranke stammt",
+                    "layoutX": 1850,
+                    "layoutY": 450
+                },
+                "configuration": {
+                    "scriptLang": "JS",
+                    "jsScript": "return metadata.deviceType == \"EntryBarrier\";",
+                    "tbelScript": "return metadata.deviceType == \"EntryBarrier\";"
+                },
+                "configurationVersion": 0,
+                "createdTime": 0,
+                "debugSettings": null,
+                "externalId": null,
+                "id": {
+                    "entityType": "RULE_NODE",
+                    "id": "ep001000-0004-11f1-0000-000000000004"
+                },
+                "name": "Check EntryBarrier",
+                "queueName": null,
+                "ruleChainId": null,
+                "singletonMode": false,
+                "type": "org.thingsboard.rule.engine.filter.TbJsFilterNode"
+            },
+            {
+                "additionalInfo": {
+                    "description": "Berechnet Verschleißgrad und setzt Wartungsstatus",
+                    "layoutX": 2100,
+                    "layoutY": 450
+                },
+                "configuration": {
+                    "scriptLang": "JS",
+                    "jsScript": "// === Predictive Maintenance: Schrankenanlage ===\nvar maxCycles = 10000;\nvar zyklen = msg.zyklen_gesamt;\nif (zyklen == null) zyklen = 0;\nzyklen = Number(zyklen);\n\nvar motorTemp = msg.motor_temperatur_c;\nif (motorTemp == null) motorTemp = 20;\nmotorTemp = Number(motorTemp);\n\n// Verschleißgrad 0-100%\nvar wearPercent = Math.min(100, Math.round((zyklen / maxCycles) * 100));\nmsg.wear_percent = wearPercent;\n\n// Wartungsstatus\nvar maintenanceStatus = \"OK\";\nvar maintenanceUrgency = 0;\nif (zyklen >= maxCycles || motorTemp >= 85) {\n    maintenanceStatus = \"KRITISCH – Sofort warten!\";\n    maintenanceUrgency = 3;\n} else if (zyklen >= 7000 || motorTemp >= 70) {\n    maintenanceStatus = \"Wartung empfohlen\";\n    maintenanceUrgency = 2;\n} else if (zyklen >= 5000) {\n    maintenanceStatus = \"Wartung in Kürze\";\n    maintenanceUrgency = 1;\n}\n\nmsg.maintenance_status = maintenanceStatus;\nmsg.maintenance_urgency = maintenanceUrgency;\nmsg.zyklen_gesamt = zyklen;\nmsg.motor_temperatur_c = motorTemp;\nmsg.zyklen_remaining = Math.max(0, maxCycles - zyklen);\n\nreturn {msg: msg, metadata: metadata, msgType: msgType};",
+                    "tbelScript": "return {msg: msg, metadata: metadata, msgType: msgType};"
+                },
+                "configurationVersion": 0,
+                "createdTime": 0,
+                "debugSettings": null,
+                "externalId": null,
+                "id": {
+                    "entityType": "RULE_NODE",
+                    "id": "ep001000-0005-11f1-0000-000000000005"
+                },
+                "name": "Predictive Maintenance Check",
+                "queueName": null,
+                "ruleChainId": null,
+                "singletonMode": false,
+                "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
+            }
+        ],
+        "ruleChainConnections": null
+    },
+    "relations": [],
+    "attributes": {
+        "SERVER_SCOPE": []
+    }
+}
